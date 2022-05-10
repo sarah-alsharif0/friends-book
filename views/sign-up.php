@@ -6,7 +6,12 @@
 	<title>Sign Up</title>
 </head>
 <body>
-	<form action="add-user.php" method="post">
+	<?php
+		if (isset($_COOKIE["user-id"])){
+			header("location:home.php");
+		}
+	?>
+	<form action="../controllers/add-user.php" method="post">
 		<div class="form__field-container">
 			<label for="username">Username</label>
 			<input type="text" id="username" name="username">

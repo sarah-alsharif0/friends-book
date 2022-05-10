@@ -8,15 +8,18 @@
 <body>
 	
 	<?php
-		require 'dbconnect.php';
+		require "util/dbconnection.php";
+		
+		if (isset($_COOKIE["user-id"])){
+			header("location:views/home.php");
+		}
+		else{
+		    header("location:views/sign-in.php");
+		}
 
-if (isset($_COOKIE['username'])){
-    echo "Welcome " . $_COOKIE['username'] . "<br>f";
-    echo "<a href='logout.php'>Logout</a><br>";
-}
-else{
-    header("location:sign-in.php");
-}
+		
+
+
 
 
 	?>

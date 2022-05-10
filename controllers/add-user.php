@@ -1,5 +1,5 @@
 <?php 
-	require 'connection.php';
+	require 'util/dbutil/dbconnection.php';
 
 	if(isset($_POST['username']) && 
 	   isset($_POST['password']) &&
@@ -27,7 +27,7 @@
 
 	$result = mysqli_query($conn,$query);
 	if($result){
-		header("location:index.php");
+		header("location:../index.php");
 
 	} else {
 	
@@ -35,6 +35,6 @@
 	}
 
 	} else {
-		header("location: sign-up.php?error=1");
+		header("location: ../views/sign-up.php?error=1");
 	}
 ?>

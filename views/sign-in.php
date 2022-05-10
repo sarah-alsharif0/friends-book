@@ -6,7 +6,12 @@
 	<title>Sign in</title>
 </head>
 <body>
-	<form class="form" action="check.php" method="post">
+	<?php
+		if (isset($_COOKIE["user-id"])){
+			header("location:home.php");
+		}
+	?>
+	<form class="form" action="../controllers/check.php" method="post">
 		<div class="form__field-container">
 			<label for="">Username</label>
 			<input type="text" id="username" name="username" placeholder="Enter username">

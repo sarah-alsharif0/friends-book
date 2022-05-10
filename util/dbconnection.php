@@ -11,5 +11,4 @@
 		die("Cannot connect to database".mysqli_connect_error());
 	}
 
-	echo "Connected to database server successfully";
 ?>
