@@ -3,10 +3,11 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 10 مايو 2022 الساعة 02:30
--- إصدار الخادم: 10.4.24-MariaDB
+-- Generation Time: May 12, 2022 at 12:58 AM
+-- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.5
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -29,19 +30,26 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `comment`
+-- RELATIONSHIPS FOR TABLE `comment`:
+--
+
+--
+-- Dumping data for table `comment`
 --
 
 INSERT INTO `comment` (`id`, `post-id`, `commentedUser-id`, `content`) VALUES
 (1, 2, 1, 'WOOOW!!'),
 (2, 2, 2, 'Thanks dude'),
 (3, 2, 2, 'Amazing!!'),
-(4, 2, 1, 'hope this works');
+(4, 2, 1, 'hope this works'),
+(12, 1, 2, 'hello there'),
+(13, 1, 2, 'hello there'),
+(14, 1, 2, 'how are you');
 
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `friends`
+-- Table structure for table `friends`
 --
 
 CREATE TABLE `friends` (
@@ -51,7 +59,11 @@ CREATE TABLE `friends` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `friends`
+-- RELATIONSHIPS FOR TABLE `friends`:
+--
+
+--
+-- Dumping data for table `friends`
 --
 
 INSERT INTO `friends` (`id`, `user1-id`, `user2-id`) VALUES
@@ -60,7 +72,7 @@ INSERT INTO `friends` (`id`, `user1-id`, `user2-id`) VALUES
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `like`
+-- Table structure for table `like`
 --
 
 CREATE TABLE `like` (
@@ -70,7 +82,11 @@ CREATE TABLE `like` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `like`
+-- RELATIONSHIPS FOR TABLE `like`:
+--
+
+--
+-- Dumping data for table `like`
 --
 
 INSERT INTO `like` (`id`, `likedUser-id`, `post-id`) VALUES
@@ -80,7 +96,7 @@ INSERT INTO `like` (`id`, `likedUser-id`, `post-id`) VALUES
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `post`
+-- Table structure for table `post`
 --
 
 CREATE TABLE `post` (
@@ -92,7 +108,11 @@ CREATE TABLE `post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `post`
+-- RELATIONSHIPS FOR TABLE `post`:
+--
+
+--
+-- Dumping data for table `post`
 --
 
 INSERT INTO `post` (`id`, `user-id`, `image-url`, `text-content`, `date`) VALUES
@@ -103,7 +123,7 @@ INSERT INTO `post` (`id`, `user-id`, `image-url`, `text-content`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `request`
+-- Table structure for table `request`
 --
 
 CREATE TABLE `request` (
@@ -112,10 +132,14 @@ CREATE TABLE `request` (
   `userRecieved-id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- RELATIONSHIPS FOR TABLE `request`:
+--
+
 -- --------------------------------------------------------
 
 --
--- بنية الجدول `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -132,7 +156,11 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- إرجاع أو استيراد بيانات الجدول `user`
+-- RELATIONSHIPS FOR TABLE `user`:
+--
+
+--
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `first-name`, `last-name`, `tele-No`, `address`, `gender`, `image-url`) VALUES
@@ -192,7 +220,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `friends`
@@ -223,4 +251,5 @@ ALTER TABLE `request`
 --
 ALTER TABLE `user`
   MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+SET FOREIGN_KEY_CHECKS=1;
 COMMIT;

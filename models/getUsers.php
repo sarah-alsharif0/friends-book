@@ -1,6 +1,6 @@
 <?php
 
-	function fetchNonFriendsUsers($userId){
+	function getNonFriendsUsers($userId){
 
 		require dirname(__DIR__)."/util/dbconnection.php";
 
@@ -37,7 +37,7 @@
 		mysqli_close($conn);
 	}
 
-	function fetchFriendsUsers($userId){
+	function getFriendsUsers($userId){
 
 		require dirname(__DIR__)."/util/dbconnection.php";
 

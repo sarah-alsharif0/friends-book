@@ -11,7 +11,7 @@
 			header("location:home.php");
 		}
 	?>
-	<form action="../controllers/add-user.php" method="post">
+	<form action="../controllers/addUser.php" method="post">
 		<div class="form__field-container">
 			<label for="username">Username</label>
 			<input type="text" id="username" name="username">
