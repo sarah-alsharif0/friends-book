@@ -2,6 +2,7 @@
     function userInformation($id){
         //,$username,$email,$firstName,$lastName,$telNo,$address,$gender
         include_once dirname(__DIR__)."/models/getUser.php";
+        
         $userInfo = getUserInfo($id);
         $username=$userInfo["username"];
         // $firstName = $userInfo["first-name"];
@@ -44,6 +45,11 @@
         </div>       
         </div>
         <div class='line'></div> 
+        <div class='friends__list'>
+        <h2>Friends List : </h2>
+
+        </div >
+        
         </div>
     
         ";

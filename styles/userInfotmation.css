@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 .user__profile__content{
-	margin: 2rem auto;
+	margin: 2rem auto 1rem auto;
 	padding: 1rem;
 }
 .wrapper{
@@ -8,7 +8,7 @@
     display: flex;
 }
 .profile__img{
-    width: 15.6rem;
+    width: 16rem;
     border-radius: 50%;
     padding-right: 2rem;
 }
@@ -37,7 +37,7 @@
     flex-direction: column;
 
 }
-.about{
+.about ,.friends__list{
     margin: 1.6rem 0rem 0rem 9rem;
 }
 .about__div{
@@ -54,9 +54,22 @@
     font-size: 1.4rem;
     color: rgb(88, 87, 87);
 }
-.bold__span{
+.bold__span,.user__name{
     font-weight: 700;
 }
 span{
     color: rgb(124, 123, 123);
+}
+.users-list__user{
+    padding: 0rem 0rem 1rem 14rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.user__image{
+    width: 7rem;
+    border-radius: 50%;
+    padding-right: 1rem;
+
 }

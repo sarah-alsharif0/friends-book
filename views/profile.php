@@ -20,6 +20,7 @@
 		    require dirname(__DIR__)."/components/navbar.php";
 			require dirname(__DIR__)."/components/userInformation.php";
 			require dirname(__DIR__)."/models/getPosts.php";
+			require dirname(__DIR__)."/models/getUsers.php";
 
 
 		    echo navbar("profile");
@@ -33,6 +34,7 @@
 	<main>
 		<?php
 		echo userInformation($userId);
+		echo getFriendsUsers($userId);
 		echo getUserPosts($userId);
 		?>
 	<main>

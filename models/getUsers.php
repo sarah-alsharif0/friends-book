@@ -63,6 +63,9 @@
 							</div>
 						  ";
 			}
+			echo"
+			<div class ='line'></div>
+			";
 			} else {
 				echo "<h3>No users found</h3>";
 			}
