@@ -1,6 +1,6 @@
 <?php 
 	function comment($userId,$commentContent){
-		include_once dirname(__DIR__)."/models/getUser.php";
+		include_once dirname(__DIR__)."/models/users.php";
 		$userInfo = getUserInfo($userId);
 
 		$firstName = $userInfo["first-name"];

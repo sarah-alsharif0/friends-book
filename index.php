@@ -17,11 +17,6 @@
 		    header("location:views/sign-in.php");
 		}
 
-		
-
-
-
-
 	?>
 </body>
 </html>

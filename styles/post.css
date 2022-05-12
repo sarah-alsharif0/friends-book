@@ -59,13 +59,17 @@
 .form__button:hover{
 	background-color: #586e72;
 }
+.post__like-button{
+	background: none;
+	border: none;
+	outline: none;
+}
 .post__interactions{
 	display: flex;
 	align-items: center;
 }
 .post__interactions li {
 	margin: 0 0.6rem 0.5rem 0.2rem;
-
 }
 .post__like-icon {
 	font-size: 1.3rem;

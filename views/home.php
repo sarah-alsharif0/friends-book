@@ -8,8 +8,9 @@
 	<link rel="stylesheet" type="text/css" href="../styles/post.css">
 	<link rel="stylesheet" type="text/css" href="../styles/comment.css">
 
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<title>Home</title>
+
 </head>
 <body>
 
@@ -37,7 +38,7 @@
 			<div class='users-list'>
 				<?php
 					
-					require dirname(__DIR__)."/models/getUsers.php";
+					require dirname(__DIR__)."/models/users.php";
 
 					getNonFriendsUsers($userId);
 				?>
@@ -47,7 +48,7 @@
 		<section class="section__posts">
 
 			<?php
-					require dirname(__DIR__)."/models/getPosts.php";
+					require dirname(__DIR__)."/models/posts.php";
 				
 					echo getUserAndFriendsPosts($userId);
 			?>
