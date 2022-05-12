@@ -18,35 +18,35 @@
 		<div class="user_details">
 		<div class="form__field-container">
 			<label for="first-name">First Name</label>
-			<input type="text" id="first-name" name="first-name" placeholder="enter your first name">
+			<input type="text" id="first-name" name="first-name" placeholder="enter your first name" required> 
 		</div>
 		<div class="form__field-container">
 			<label for="last-name">Last Name</label>
-			<input type="last-name" id="last-name" name="last-name" placeholder="enter your last name">
+			<input type="last-name" id="last-name" name="last-name" placeholder="enter your last name" required>
 		</div>
 		<div class="form__field-container">
 			<label for="username">Username</label>
-			<input type="text" id="username" name="username" placeholder="enter your user name">
+			<input type="text" id="username" name="username" placeholder="enter your user name" required>
 		</div>
 		<div class="form__field-container">
 			<label for="email">Email</label>
-			<input type="email" id="email" name="email" placeholder="enter your email">
+			<input type="email" id="email" name="email" placeholder="enter your email" required>
 		</div>
 		<div class="form__field-container">
 			<label for="password">Password</label>
-			<input type="password" id="password" name="password" placeholder="enter your password">
+			<input type="password" id="password" name="password" placeholder="enter your password" required>
 		</div>
 		<div class="form__field-container">
 			<label for="teleNo">Telephone Number</label>
-			<input type="number" id="teleNo" name="teleNo" placeholder="enter mobile number">
+			<input type="number" id="teleNo" name="teleNo" placeholder="enter mobile number" required>
 		</div>
 		<div class="form__field-container">
 			<label for="address">Address</label>
-			<input id="address" name="address" type="text" placeholder="enter your address">
+			<input id="address" name="address" type="text" placeholder="enter your address"required >
 		</div>
 		<div class="form__field-container">
 			<label for="image-url">Image Url</label>
-			<input type="text" id="image-url" name="image-url" placeholder="enter image link">
+			<input type="text" id="image-url" name="image-url" placeholder="enter image link"required>
 		</div>
 		</div>
 		<div class="gender-container">
@@ -55,7 +55,7 @@
 			<div class="gender__title"
 			><div>
 			<label for="female">Female</label>
-			<input type="radio" id="female" name="gender" value="female">
+			<input type="radio" id="female" name="gender" value="female" required>
 			</div>
 			<div>
 			<label for="male">Male</label>

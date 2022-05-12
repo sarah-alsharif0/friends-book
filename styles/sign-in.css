@@ -8,23 +8,25 @@
 body{
     display: flex;
     height: 100vh;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10px;
     background: linear-gradient(135deg,#73bac9,#586e72);
 }
 .container{
-    max-width: 700px;
-    width: 100%;
+    max-width: 550px;
+    width: 76%;
     background: #fff;
     padding: 25px 30px;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.15);       
 }
 .container .title{
+    align-items: center;
     position: relative;
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 600;
 }
 .container .title:before{
     content: "";
@@ -39,7 +41,9 @@ body{
 .container form .user_details{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin: 20px 0 12px 0;
 }
 form .user_details .form__field-container{
@@ -47,7 +51,7 @@ form .user_details .form__field-container{
     width: calc(100% / 2 - 20px);
 }
 .user_details .form__field-container label{
-    font-weight:500;
+    font-weight:600;
     display: block;
     margin-bottom: 5px;
 }
@@ -66,27 +70,17 @@ form .user_details .form__field-container{
 .user-details .form__field-container input:valid{
   border-color: #586e72;
 }
-form .gender-container span{
-    font-size: 20px;
-    font-weight: 600;
-
-}
-form .gender-container .gender__title{
-    display: flex;
-    justify-content: space-between;
-    margin:14px 0;
-    width: 30%;
-}
 form button{
     height: 100%;
-    width: 100%;
+    width: 19%;
     border-radius: 5px;
     border: none;
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 500;
     padding:9px 0px;
     letter-spacing: 1px;
+    margin: 9px 0px 11px 193px;
     cursor: pointer;
     transition: all 0.3s ease;
     background: linear-gradient(135deg,#73bac9,#586e72);

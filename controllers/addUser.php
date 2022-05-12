@@ -1,5 +1,5 @@
 <?php 
-	require 'util/dbutil/dbconnection.php';
+		    require dirname(__DIR__)."/util/dbconnection.php";
 
 	if(isset($_POST['username']) && 
 	   isset($_POST['password']) &&
