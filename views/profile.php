@@ -36,6 +36,24 @@
 		echo userInformation($userId);
 		echo getFriendsUsers($userId);
 		echo getUserPosts($userId);
+		
+		if(isset($_GET['delete'])){
+			 if (($_GET['delete'])==1){       
+				?>
+				    echo '<script>alert('Post Deleted Successfully')</script>';
+
+				<?php
+				    header("location: ../views/profile.php");
+
+			}
+			if (($_GET['delete'])==2){       
+				?>
+				    echo '<script>alert('Something Goes Wrong , Please Try Again Later')</script>';
+				<?php
+			}
+			
+		}
+		
 		?>
 	<main>
 </body>

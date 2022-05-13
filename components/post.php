@@ -1,15 +1,16 @@
 <?php 
-	
-	function post($postId,$userId,$imageUrl,$textContent,$date){
+	function post($user_id,$postId,$userId,$imageUrl,$textContent,$date){
 
 		include_once dirname(__DIR__)."/models/getUser.php";
 		include_once dirname(__DIR__)."/models/getPostInteractions.php";
+
 		$userInfo = getUserInfo($userId);
 		$numberOfLikes = getNumberOfPostLikes($postId);
 		$numberOfComments = getNumberOfPostComments($postId);
 		$isLiked = isLiked($postId,$userId);
 		$likeIcon = ($isLiked?"<i class='fa-regular fa-heart post__like-icon'></i>":"<i class='fa-solid fa-heart post__like-icon'></i>");
-
+		$updateIcon = ($userId == $user_id?"update":"");
+		$deleteIcon = ($userId == $user_id?"delete":"");
 		$firstName = $userInfo["first-name"];
 		$lastName = $userInfo["last-name"];
 		$userImageUrl = $userInfo["image-url"];
@@ -18,6 +19,11 @@
 
 
 		return "<div class='post'>
+		            <ul class='post__adjustment'>	
+				  		<li><a >$updateIcon</a></li>
+				  		<li><a href='../controllers/deletePost.php?id=$postId'> $deleteIcon</a></li>
+				  	</ul>
+	
 					<div class='post__userInfo'>
 						<img src='$userImageUrl' class='post__userImage1'>
 						<div class='wrapper'>
