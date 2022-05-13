@@ -6,7 +6,6 @@
 	if (isset($_POST['content']) && trim($_POST['content']) != '') {
 		$content = $_POST["content"];
 		$commentId = addComment($postId,$content);
-
 		echo getComment($commentId);
 	}
 	
