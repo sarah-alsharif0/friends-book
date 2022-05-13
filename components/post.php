@@ -50,7 +50,7 @@
 			  	 
 			  	  <div class='post__comments' id='comments$postId'> 
 			  	  ".($numberOfComments>0?
-			  	  	$comments:'<h4>
+			  	  	$comments:'<h4 id="message">
 			  	  		No Comments
 			  	  	</h4>'
 			  	  )
@@ -74,8 +74,16 @@
 							inputs.prop('disabled', true);
 							
 							$.post('../controllers/handleComment.php',serializedData,function(data){
-									$('#comments$postId').append(data);
+									if(!data){
+										inputs.prop('disabled', false);
+										return false;
+									}
 									var numberOfComments = $('#noofcomments$postId').html();
+									
+									if(+numberOfComments === 0){
+										$('#message').remove();
+									}
+									$('#comments$postId').append(data);
 									$('#noofcomments$postId').html(+numberOfComments+1);
 									inputs.prop('value','');
 									inputs.prop('disabled', false);
