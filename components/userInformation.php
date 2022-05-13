@@ -1,18 +1,14 @@
 <?php
     function userInformation($id){
-        //,$username,$email,$firstName,$lastName,$telNo,$address,$gender
         include_once dirname(__DIR__)."/models/getUser.php";
         
         $userInfo = getUserInfo($id);
         $username=$userInfo["username"];
-        // $firstName = $userInfo["first-name"];
         $firstName=ucfirst(strtolower($userInfo["first-name"]));
         $lastName=ucfirst(strtolower($userInfo["last-name"]));
         $email = $userInfo["email"];
         $teleNo = $userInfo["tele-No"];
-        // $address = $userInfo["address"];
         $address=ucfirst(strtolower($userInfo["address"]));
-        // $gender = $userInfo["gender"];
 		$userImageUrl = $userInfo["image-url"];
         
         return "

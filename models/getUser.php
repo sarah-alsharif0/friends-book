@@ -1,4 +1,5 @@
 <?php 
+
 	
 	function getUserInfo($userId) {
 		require dirname(__DIR__)."/util/dbconnection.php";		
@@ -17,5 +18,18 @@
 
 		} else echo mysqli_error($conn);
 	}
+
+	function getUserId($username) {
+		require dirname(__DIR__)."/util/dbconnection.php";		
+		$query = "SELECT * FROM user WHERE username='$username'";
+		$result = mysqli_query($conn,$query);
+		if(mysqli_num_rows($result) > 0){
+
+			$userId	 = mysqli_fetch_assoc($result)['id'];
+			return $userId;
+		
+		} else echo mysqli_error($conn);
+	}
+	
 
 ?>

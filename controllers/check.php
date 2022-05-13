@@ -13,7 +13,7 @@
 
 			$userId = mysqli_fetch_assoc($result)['id'];
 			setcookie("user-id",$userId,time()+10000,'/');
-			echo $userId;
+			// echo $userId;
 			header("location: ../index.php");
 
 		} else {

@@ -91,3 +91,7 @@ form button:hover{
     background: linear-gradient(-135deg, #73bac9,#586e72);
 
 }
+ div .alert{
+    font-size: 14px;
+    color: red;
+}

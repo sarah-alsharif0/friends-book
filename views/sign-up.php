@@ -27,10 +27,31 @@
 		<div class="form__field-container">
 			<label for="username">Username</label>
 			<input type="text" id="username" name="username" placeholder="enter your user name" required>
+			<?php
+			if(isset($_GET['error']))
+			 if (($_GET['error'])==1 ||($_GET['error'])==3 ){       
+				?>
+				<div>
+					<sapn class="alert">User Name Already in Use</span>
+				</div>
+				<?php
+			}
+			?>
 		</div>
 		<div class="form__field-container">
 			<label for="email">Email</label>
 			<input type="email" id="email" name="email" placeholder="enter your email" required>
+			<?php
+			if(isset($_GET['error']))
+			 if (($_GET['error'])==2 ||($_GET['error'])==3){
+                            
+				?>
+			 	<div>
+					<sapn class="alert">Email Already in Use</span>
+				</div>
+			 	<?php
+			}
+			?> 
 		</div>
 		<div class="form__field-container">
 			<label for="password">Password</label>
@@ -68,15 +89,5 @@
 		<button type="submit">Sign Up</button>
 	</form>
 	</div>
-	
-		<?php
-                        if (isset($_GET['error'])){
-                            ?>
-                            <div class="alert alert-danger" role="alert">
-                            Fields cannot be empty!
-                            </div>
-                          <?php
-                        }
-                    ?>
 </body>
 </html>

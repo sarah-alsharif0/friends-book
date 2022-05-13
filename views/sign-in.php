@@ -24,17 +24,19 @@
 			<label for="password">Password</label>
 			<input type="password" id="password" name="password" placeholder="Enter password" required>
 		</div>
-	</div>
-		<button type="submit">Sign In</button>
 		<?php
                         if (isset($_GET['error'])){
                             ?>
-                            <div class="alert alert-danger" role="alert">
-                            Invalid Username or Password!
+                            <div  role="alert">
+                            <span class="alert ">Invalid Username or Password!</span>
                             </div>
                           <?php
                         }
                     ?>
+	</div>
+	
+		<button type="submit">Sign In</button>
+		
 	</form>
 	</div>
 
