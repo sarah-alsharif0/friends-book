@@ -42,17 +42,18 @@
 	$password =strip_tags($password);
     $password =str_replace(' ','',$password);
 
-	$user_check = mysqli_query($conn, "SELECT username FROM user WHERE username='$username'");
-	$email_check =mysqli_query($conn, "SELECT email FROM user WHERE email='$email'");
+	$user_check = mysqli_query($conn, "SELECT * FROM user WHERE username='$username'");
+	$email_check =mysqli_query($conn, "SELECT * FROM user WHERE email='$email'");
 
     $user_num_rows = mysqli_num_rows($user_check);
 	$email_num_rows = mysqli_num_rows($email_check);
 
         if($user_num_rows>0 && $email_num_rows>0){
             $error=3;
-        }if($user_num_rows<0 && $email_num_rows>0){
+        }
+		if($user_num_rows==0 && $email_num_rows>0){
 			$error =2;
-		}else if($user_num_rows>0 && $email_num_rows<0){
+		}else if($user_num_rows>0 && $email_num_rows==0){
 			$error=1;
 		}
 	if($error == 0){
