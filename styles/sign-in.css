@@ -95,3 +95,13 @@ form button:hover{
     font-size: 14px;
     color: red;
 }
+.routing_sign-up{
+    padding-top: 5px;
+    font-size: 12px;
+    text-align: center;
+    margin-left:125px;
+}
+.routing_sign-up>a{
+    color: #50676b;
+    cursor: pointer;
+}

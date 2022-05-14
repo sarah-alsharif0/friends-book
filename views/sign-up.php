@@ -88,6 +88,9 @@
 		
 		<button type="submit">Sign Up</button>
 	</form>
+	<span class= "routing_sign-in">Already have an account? <a href="../views/sign-in.php">Sign up here</a></span>
+
 	</div>
+
 </body>
 </html>

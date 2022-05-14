@@ -17,7 +17,7 @@ body{
     max-width: 700px;
     width: 100%;
     background: #fff;
-    padding: 25px 30px;
+    padding: 16px 30px;
     border-radius: 5px;
     box-shadow: 0 5px 10px rgba(0,0,0,0.15);       
 }
@@ -40,7 +40,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin: 20px 0 12px 0;
+    margin: 20px 0 -2px 0;
 }
 form .user_details .form__field-container{
     margin-bottom: 15px;
@@ -74,7 +74,7 @@ form .gender-container span{
 form .gender-container .gender__title{
     display: flex;
     justify-content: space-between;
-    margin:14px 0;
+    margin:9px 0;
     width: 30%;
 }
 form button{
@@ -100,6 +100,16 @@ form button:hover{
 .form__field-container div .alert{
     font-size: 12px;
     color: red;
+}
+.routing_sign-in{
+    padding-top: 5px;
+    font-size: 12px;
+    text-align: center;
+    margin-left:149px;
+}
+.routing_sign-in>a{
+    color: #50676b;
+    cursor: pointer;
 }
 
 

@@ -23,6 +23,9 @@
 							My Profile
 						</a>
 						</li>
+						<li>
+						<a href='../controllers/log-out.php' class ='logOut'>log out</a>
+						</li>
 					</ul>
 				</nav>
 			   ";
