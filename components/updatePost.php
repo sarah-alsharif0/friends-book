@@ -17,8 +17,8 @@ function getPostInfo(){
         $imagePost = ($postImageUrl?"<input type='text' name='imagePost' value='$postImageUrl'><br>":"<input type='text' name='imagePost' value='Add Image'><br>");
         $date = $postInfo['date'];
         $postContent= $postInfo["text-content"];
+        $postContent =strip_tags($postContent);;
         $postContentcheck = ($postContent?"<input type='text' name='postContent' value='$postContent'><br>":"<input type='text' name='imagePost' value='Add Text'><br>");
-        // header("location: ../views/edit-post.php");
         echo "<div>
                <form method ='post' id='edit__postForm'>
                 <div class='post__userInfo'>
