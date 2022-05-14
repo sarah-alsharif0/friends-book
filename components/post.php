@@ -20,8 +20,8 @@
 
 		return "<div class='post'>
 		            <ul class='post__adjustment'>	
-				  		<li><a >$updateIcon</a></li>
-				  		<li><a href='../controllers/deletePost.php?id=$postId'> $deleteIcon</a></li>
+				  		<li><a href='../views/edit-post.php?post-id=$postId'>$updateIcon</a></li>
+				  		<li><a href='../controllers/deletePost.php?post-id=$postId'> $deleteIcon</a></li>
 				  	</ul>
 	
 					<div class='post__userInfo'>

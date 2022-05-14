@@ -56,7 +56,28 @@
 		mysqli_close($conn);
 	}
 
+	
+	function getPostToUpdate($postId){
+		require dirname(__DIR__)."/util/dbconnection.php";
 
+		$query = "SELECT * FROM post WHERE `id`= $postId";
+		$postInfo = mysqli_query($conn,$query);
+		if($postInfo){
+		if(mysqli_num_rows($postInfo) > 0 ){
+		$postInfo = mysqli_fetch_assoc($postInfo);
+		$array=array("id"=> $postInfo['id'],"user-id"=>$postInfo['user-id'],
+						 "image-url"=>$postInfo['image-url'],"text-content"=>$postInfo['text-content'],
+						 "date"=>$postInfo['date']);
+			return $array;						
+	   } else echo "<h4 class='message'>Ops, No posts found !</h4>";
+	}
+		
+	}
+
+	
+
+	
+	
 	
 					
 ?>
