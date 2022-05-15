@@ -1,6 +1,7 @@
 <?php
 
-    require dirname(__DIR__)."/models/requests.php";
+    include_once dirname(__DIR__)."/models/requests.php";
+    include_once dirname(__DIR__)."/models/posts.php";
 
     $action = null;
     
@@ -15,7 +16,8 @@
     } else if($action === "accept"){
         $requestId = $_POST["request-id"];
         acceptRequest($requestId);
-    } else if($action === "deny"){
+        echo getUserAndFriendsPosts($_COOKIE['user-id']);
+       } else if($action === "deny"){
         $requestId = $_POST["request-id"];
         denyRequest($requestId);
     }

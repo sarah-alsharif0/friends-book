@@ -7,7 +7,7 @@
 		
 		$result = mysqli_query($conn,$query);
 		if($result){
-			if($row = mysqli_num_rows($result) > 0){
+			if(mysqli_num_rows($result) > 0){
 				return true;
 			} else {
 				return false;
@@ -28,7 +28,7 @@
 
 		$result = mysqli_query($conn,$query);
 		if($result){
-			if($row = mysqli_num_rows($result) > 0){
+			if(mysqli_num_rows($result) > 0){
 				return true;
 			} else {
 				return false;
@@ -47,9 +47,9 @@
 
 		$result = mysqli_query($conn,$query);
 		if($result){
-			if($row = mysqli_num_rows($result) > 0){
-
-				$userSent = $rows["userSent-id"];
+			if(mysqli_num_rows($result) > 0){
+				$row = mysqli_fetch_assoc($result);
+				$userSent = $row["userSent-id"];
 				$userRecieved = $row["userRecieved-id"];
 
 				$query = "INSERT INTO friends (`user1-id`,`user2-id`) VALUES ($userSent,$userRecieved);
@@ -107,7 +107,7 @@
 		if($isRecieved)
 			return;
 		
-		$query = "INSERT INTO request (`userSent-id`,`userRecieved-id`) VALUES ($userId,$currUserId)";
+		$query = "INSERT INTO request (`userSent-id`,`userRecieved-id`) VALUES ($currUserId,$userId)";
 
 		$result = mysqli_query($conn,$query);
 

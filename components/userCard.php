@@ -16,22 +16,20 @@ function UserCard($userId, $firstName, $lastName, $imageUrl)
     $isReqRecieved = checkForFriendRequest($userId,$currUserId);
 
     $actions = "";
-    $requestId = null;
+    $requestId = checkForFriendRequest($currUserId,$userId)?getRequestId($currUserId,$userId):(checkForFriendRequest($userId,$currUserId)?getRequestId($userId,$currUserId):0);
 
     if($isReqSent){
         $actions = "<button class='actions__button' disabled>$sendIconDisabled</button>";
-        $requestId = getRequestId($currUserId,$userId);
     } else if ($isReqRecieved){
         $actions = "
             <button class='actions__button' id='accept$userId'>$acceptIcon</button>
             <button class='actions__button' id='deny$userId'>$denyIcon</button>
         ";
-        $requestId = getRequestId($userId,$currUserId);
     } else if (!$isReqSent && !$isReqRecieved && !$isFriend){
         $actions = "<button class='actions__button' id='send$userId'>$sendIcon</button>";
     }
 
-    return "<div class='users-list__user-card$userId'>
+    return "<div class='users-list__user-card' id='userCard$userId'>
                 <div class='user-card__user-info'>
                     <img class='user-info__image' src=$imageUrl>
                     <span class='user-info__name'>$firstName $lastName</span>
@@ -44,9 +42,11 @@ function UserCard($userId, $firstName, $lastName, $imageUrl)
             <script>
                 $(document).ready(function(){
 
-                    $('#send$userId').click(function(){
-                        $.post('../controllers/handleRequest.php',{ 'second-user-id' : $userId, \"action\": 'send' },
+                    function bindE(){
+                        $('#send$userId').click(function(){
+                        $.post('../controllers/handleRequest.php',{ 'second-user-id' : $userId, 'action': 'send' },
                         function(){
+                            console.log('from send');                        
                             var actions = \"<button class='actions__button' disabled>$sendIconDisabled</button>\";
                             $('#actions$userId').empty();
                             $('#actions$userId').append(actions);
@@ -54,20 +54,28 @@ function UserCard($userId, $firstName, $lastName, $imageUrl)
                     });
                     
                     $('#accept$userId').click(function(){
-                        $.post('../controllers/handleRequest.php',{ 'request-id' : $requestId, 'action': 'accept' },
-                        function(){
-                            $('#actions$userId').remove();
+                        var requestId = $requestId;
+                        console.log(requestId);
+                        $.post('../controllers/handleRequest.php',{ 'request-id' : requestId, 'action': 'accept' },
+                        function(data){
+                            $('#posts').empty();                        
+                            $('#posts').append(data);                        
+                            $('#userCard$userId').remove();
                         });
                     });
                     
                     $('#deny$userId').click(function(){
-                        $.post('../controllers/handleRequest.php',{ 'request-id' : $requestId, 'action': 'deny' },
+                        var requestId = $requestId;
+                        console.log(requestId);
+                        $.post('../controllers/handleRequest.php',{ 'request-id' :  requestId, 'action': 'deny' },
                         function(){
                             var actions = \"<button class='actions__button' id='send$userId'>$sendIcon</button>\";
                             $('#actions$userId').empty();
                             $('#actions$userId').append(actions);
                         });
                     });
+                }
+                setInterval(bindE,3000);
                     
                 });
             </script>

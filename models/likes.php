@@ -14,7 +14,7 @@
 
 			return mysqli_num_rows($result);
 			
-		} else return mysql_error($conn);
+		} else return mysqli_error($conn);
 
 		return mysqli_close($conn);
 	}

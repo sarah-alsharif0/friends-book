@@ -44,14 +44,14 @@
 	if (isset($_COOKIE["user-id"])) {
 		$userId = $_COOKIE["user-id"];
 
-		require dirname(__DIR__) . "/util/dbconnection.php";
+		include dirname(__DIR__) . "/util/dbconnection.php";
 	} else {
 		header("location:sign-in.php");
 	}
 	?>
 
 	<?php
-	require dirname(__DIR__) . "/components/navbar.php";
+	include_once dirname(__DIR__) . "/components/navbar.php";
 
 	echo navbar("home");
 
@@ -63,7 +63,7 @@
 			<div class='add-friends__users-list'>
 				<?php
 
-				require dirname(__DIR__) . "/models/users.php";
+				include_once dirname(__DIR__) . "/models/users.php";
 
 				echo getNonFriendsUsers($userId);
 				?>
@@ -73,7 +73,7 @@
 		<section id="posts" class="section__posts">
 
 			<?php
-			require dirname(__DIR__) . "/models/posts.php";
+			include_once dirname(__DIR__) . "/models/posts.php";
 
 			echo getUserAndFriendsPosts($userId);
 			?>

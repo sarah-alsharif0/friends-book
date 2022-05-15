@@ -3,7 +3,7 @@
 	function getUserAndFriendsPosts($userId){
 
 		require dirname(__DIR__)."/util/dbconnection.php";
-		require dirname(__DIR__)."/components/post.php";
+		include_once dirname(__DIR__)."/components/post.php";
 
 		$query = "SELECT friends.`user1-id` , friends.`user2-id`, post.* 
 				  FROM friends
@@ -24,7 +24,7 @@
 				return "<h3 class='message'>No posts found</h3>";
 			}
 		} else {
-			echo mysql_error($conn);
+			echo mysqli_error($conn);
 		}
 
 
@@ -34,7 +34,7 @@
 	function getUserPosts($userId){
 
 		require dirname(__DIR__)."/util/dbconnection.php";
-		require dirname(__DIR__)."/components/post.php";
+		include_once dirname(__DIR__)."/components/post.php";
 
 		$query = "SELECT * FROM post WHERE `user-id`= $userId ORDER BY `date` DESC";
 
@@ -50,7 +50,7 @@
 
 			} else echo "<h4 class='message'>No posts found</h4>";
 			
-		} else echo mysql_error($conn);
+		} else echo mysqli_error($conn);
 			 						
 		
 

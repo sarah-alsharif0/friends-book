@@ -3,13 +3,20 @@
 	function getNonFriendsUsers($userId){
 
 		require dirname(__DIR__)."/util/dbconnection.php";
-		require dirname(__DIR__)."/components/userCard.php";
-
-		$query = "SELECT friends.`user1-id` , friends.`user2-id`, user.*
-					  FROM friends
-					  RIGHT JOIN user 
-					  ON user.id != friends.`user1-id` AND user.id != friends.`user2-id` 
-					  WHERE friends.`user1-id`='$userId' OR friends.`user2-id`='$userId'";
+		include_once dirname(__DIR__)."/components/userCard.php";
+		
+		$query = "SELECT *
+			      FROM user
+				  WHERE id NOT IN (
+					SELECT `user2-id`
+				  	FROM friends
+				  	WHERE `user1-id` = $userId
+				  ) AND id NOT IN (
+					SELECT `user1-id`
+				  	FROM friends
+				  	WHERE `user2-id` = $userId
+				  ) AND id != $userId
+				  ";
 
 		$result = mysqli_query($conn,$query);
 
@@ -17,6 +24,7 @@
 			if(mysqli_num_rows($result) > 0){
 				$users = "";
 				while ($row = mysqli_fetch_assoc($result)) {
+
 					$firstName = $row['first-name'];
 					$lastName = $row['last-name'];
 					$imageUrl = $row['image-url'];
@@ -38,7 +46,7 @@
 	function getFriendsUsers($userId){
 
 		require dirname(__DIR__)."/util/dbconnection.php";
-		require dirname(__DIR__)."/components/userCard.php";
+		include_once dirname(__DIR__)."/components/userCard.php";
 
 		$query = "SELECT friends.`user1-id` , friends.`user2-id`, user.*
 				  FROM friends
@@ -50,6 +58,7 @@
 
 		if ($result) {
 			if(mysqli_num_rows($result) > 0){
+				$users = "";
 				while ($row = mysqli_fetch_assoc($result)) {
 					$firstName = $row['first-name'];
 					$lastName = $row['last-name'];
@@ -69,7 +78,7 @@
 	}
 
 		function getUserInfo($userId) {
-		require dirname(__DIR__)."/util/dbconnection.php";		
+			require dirname(__DIR__)."/util/dbconnection.php";		
 
 		$query = "SELECT * FROM user WHERE id = $userId";
 
@@ -85,4 +94,3 @@
 
 		} else echo mysqli_error($conn);
 	}
-?>

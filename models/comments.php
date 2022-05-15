@@ -4,7 +4,6 @@
 
 		require dirname(__DIR__)."/util/dbconnection.php";
 
-		
 		$commentedUserId = $_COOKIE['user-id'];
 		$query = $conn->prepare("INSERT INTO comment (`post-id`,`commentedUser-id`,content)
 				  VALUES (?, ?, ?)");
@@ -25,8 +24,8 @@
 	function getComment($commentId){
 
 		require dirname(__DIR__)."/util/dbconnection.php";
-		require dirname(__DIR__)."/models/users.php";
-		require dirname(__DIR__)."/components/comment.php";
+		include_once dirname(__DIR__)."/models/users.php";
+		include_once dirname(__DIR__)."/components/comment.php";
 
 		$query = "SELECT * FROM comment WHERE id = $commentId";
 
@@ -63,7 +62,7 @@
 				$comments .= comment($userId,$commentContent);
 			}
 			return $comments;
-		} else echo mysql_error($conn);
+		} else echo mysqli_error($conn);
 
 		mysqli_close($conn);
 	}
