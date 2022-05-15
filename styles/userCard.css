@@ -1,0 +1,37 @@
+.users-list__user-card{
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.43);
+    padding: 1rem 2rem;
+}
+.user-card__user-info{
+    display: flex;
+    align-items: center;
+}
+.user-info__image{
+    width: 3rem;
+	border-radius: 50px;
+	margin: 0.5rem 1rem 0.5rem 0 ;
+}
+.user-info__name {
+    font-size: 1rem;
+
+}
+.actions__button{
+	background: none;
+	border: none;
+	font-size: 0.8rem;
+	cursor: pointer;
+}
+.user-card__actions{
+    display: flex;
+    justify-content: flex-end;
+}
+.request-icon{
+    font-size: 1.7rem;
+    color: #586e72;
+    margin: 0.2rem 0.5rem;
+}
+.disabled {
+    color: rgba(128, 128, 128, 0.488);
+}

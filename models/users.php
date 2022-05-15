@@ -3,6 +3,7 @@
 	function getNonFriendsUsers($userId){
 
 		require dirname(__DIR__)."/util/dbconnection.php";
+		require dirname(__DIR__)."/components/userCard.php";
 
 		$query = "SELECT friends.`user1-id` , friends.`user2-id`, user.*
 					  FROM friends
@@ -14,24 +15,21 @@
 
 		if ($result) {
 			if(mysqli_num_rows($result) > 0){
+				$users = "";
 				while ($row = mysqli_fetch_assoc($result)) {
 					$firstName = $row['first-name'];
 					$lastName = $row['last-name'];
 					$imageUrl = $row['image-url'];
 					$id = $row['id'];
-					echo "
-							<div class='users-list__user'>
-								<img class='user__image' src=$imageUrl>
-								<span class='user__name'>$firstName $lastName</span>
-								<button onClick>Add</button>
-							</div>
-						  ";
+					
+					$users .= userCard($id,$firstName,$lastName,$imageUrl);
 			}
+			return $users;
 			} else {
 				echo "<h3>No users found</h3>";
 			}
 		} else {
-			echo mysql_error($conn);
+			echo mysqli_error($conn);
 		}
 
 		mysqli_close($conn);
@@ -40,6 +38,7 @@
 	function getFriendsUsers($userId){
 
 		require dirname(__DIR__)."/util/dbconnection.php";
+		require dirname(__DIR__)."/components/userCard.php";
 
 		$query = "SELECT friends.`user1-id` , friends.`user2-id`, user.*
 				  FROM friends
@@ -56,18 +55,14 @@
 					$lastName = $row['last-name'];
 					$imageUrl = $row['image-url'];
 					$id = $row['id'];
-					echo "
-							<div class='users-list__user'>
-								<img class='user__image' src=$imageUrl>
-								<span class='user__name'>$firstName $lastName</span>
-							</div>
-						  ";
+					$users .= userCard($id,$firstName,$lastName,$imageUrl);
 			}
+			return $users;
 			} else {
 				echo "<h3>No users found</h3>";
 			}
 		} else {
-			echo mysql_error($conn);
+			echo mysqli_error($conn);
 		}
 
 		mysqli_close($conn);

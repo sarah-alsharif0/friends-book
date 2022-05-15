@@ -1,59 +1,23 @@
 <?php
-	
-	function checkForFriendRequest($userSent,$userRecieved){
 
-		require dirname(__DIR__)."/util/dbconnection.php";
+    require dirname(__DIR__)."/models/requests.php";
 
-		$query = "SELECT id FROM request WHERE `userSent-id`=$userSent AND `userRecieved-id`= $userRecieved";
+    $action = null;
+    
+    if(isset($_POST['action']))
+        $action = $_POST["action"];
 
-		$result = mysqli_query($conn,$query);
-		if($result){
-			if($row = mysqli_num_rows($result) > 0){
-				return $row['id'];
-			} else {
-				return null;
-			}
-		} else {
-			echo mysqli_error($conn);
-		}
+    if($action === "send"){
+        if(isset($_POST["second-user-id"])){
+            $secondUserId = $_POST["second-user-id"];
+            sendRequest($secondUserId);
+        }
+    } else if($action === "accept"){
+        $requestId = $_POST["request-id"];
+        acceptRequest($requestId);
+    } else if($action === "deny"){
+        $requestId = $_POST["request-id"];
+        denyRequest($requestId);
+    }
 
-		mysqli_close($conn);
-	}
-
-	function acceptRequest($requestId){
-		require dirname(__DIR__)."/util/dbconnection.php";
-
-		$query = "SELECT * FROM request WHERE id=$requestId";
-
-		$result = mysqli_query($conn,$query);
-		if($result){
-			if($row = mysqli_num_rows($result) > 0){
-				$query = "INSERT INTO friends (`user1-id`,`user2-id`) VALUES ($rows['userSent-id'],$row['userRecieved-id']);
-					DELETE FROM request WHERE id=$requestId;
-				";
-				$result = mysqli_multi_query($conn,$query);
-				if(!$result){
-					echo mysqli_error($conn);
-				}
-			}
-		} else {
-			echo mysqli_error($conn);
-		}
-
-		mysqli_close($conn);
-	}
-
-	function denyRequest($requestId){
-		require dirname(__DIR__)."/util/dbconnection.php";
-
-		$query = "DELETE FROM request WHERE id=$requestId";
-		$result = mysqli_query($conn,$query);
-
-		if(!$result){
-			echo mysqli_error($conn);
-		}
-
-		mysqli_close($conn);
-	}
-	
 ?>
