@@ -1,25 +1,34 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2022 at 12:58 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.5
+-- Generation Time: May 15, 2022 at 04:43 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 7.4.27
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
 --
 -- Database: `friends-book`
 --
+CREATE DATABASE IF NOT EXISTS `friends-book` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE `friends-book`;
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `comment`
+--
+-- Creation: May 15, 2022 at 02:16 PM
 --
 
 CREATE TABLE `comment` (
@@ -31,25 +40,18 @@ CREATE TABLE `comment` (
 
 --
 -- RELATIONSHIPS FOR TABLE `comment`:
+--   `post-id`
+--       `post` -> `id`
+--   `commentedUser-id`
+--       `user` -> `id`
 --
-
---
--- Dumping data for table `comment`
---
-
-INSERT INTO `comment` (`id`, `post-id`, `commentedUser-id`, `content`) VALUES
-(1, 2, 1, 'WOOOW!!'),
-(2, 2, 2, 'Thanks dude'),
-(3, 2, 2, 'Amazing!!'),
-(4, 2, 1, 'hope this works'),
-(12, 1, 2, 'hello there'),
-(13, 1, 2, 'hello there'),
-(14, 1, 2, 'how are you');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `friends`
+--
+-- Creation: May 15, 2022 at 02:14 PM
 --
 
 CREATE TABLE `friends` (
@@ -60,19 +62,18 @@ CREATE TABLE `friends` (
 
 --
 -- RELATIONSHIPS FOR TABLE `friends`:
+--   `user1-id`
+--       `user` -> `id`
+--   `user2-id`
+--       `user` -> `id`
 --
-
---
--- Dumping data for table `friends`
---
-
-INSERT INTO `friends` (`id`, `user1-id`, `user2-id`) VALUES
-(1, 1, 2);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `like`
+--
+-- Creation: May 15, 2022 at 02:14 PM
 --
 
 CREATE TABLE `like` (
@@ -83,20 +84,18 @@ CREATE TABLE `like` (
 
 --
 -- RELATIONSHIPS FOR TABLE `like`:
+--   `post-id`
+--       `post` -> `id`
+--   `likedUser-id`
+--       `user` -> `id`
 --
-
---
--- Dumping data for table `like`
---
-
-INSERT INTO `like` (`id`, `likedUser-id`, `post-id`) VALUES
-(1, 1, 2),
-(2, 2, 2);
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `post`
+--
+-- Creation: May 15, 2022 at 02:12 PM
 --
 
 CREATE TABLE `post` (
@@ -109,21 +108,16 @@ CREATE TABLE `post` (
 
 --
 -- RELATIONSHIPS FOR TABLE `post`:
+--   `user-id`
+--       `user` -> `id`
 --
-
---
--- Dumping data for table `post`
---
-
-INSERT INTO `post` (`id`, `user-id`, `image-url`, `text-content`, `date`) VALUES
-(1, 1, 'https://picsum.photos/200', 'hello', '2022-05-17'),
-(2, 2, 'https://picsum.photos/200', 'world', '2022-05-11'),
-(3, 3, 'https://picsum.photos/200', 'hi there', '2022-05-04');
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `request`
+--
+-- Creation: May 15, 2022 at 02:07 PM
 --
 
 CREATE TABLE `request` (
@@ -134,12 +128,19 @@ CREATE TABLE `request` (
 
 --
 -- RELATIONSHIPS FOR TABLE `request`:
+--   `userRecieved-id`
+--       `user` -> `id`
+--   `userSent-id`
+--       `user` -> `id`
 --
 
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `user`
+--
+-- Creation: May 15, 2022 at 02:18 PM
+-- Last update: May 15, 2022 at 01:50 PM
 --
 
 CREATE TABLE `user` (
@@ -165,8 +166,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `first-name`, `last-name`, `tele-No`, `address`, `gender`, `image-url`) VALUES
 (1, 'sarah_sh', '1234', 'sarah@test.com', 'sarah first', 'alsharif', '123456789', 'alharas', 'female', 'https://picsum.photos/200'),
-(2, 'sarah_alsharif_', '', 'test@test.com', 'sarah second', 'alsharif', '1234', 'hebron', 'female', 'https://picsum.photos/200'),
-(3, 'tmp', '1234', 'tmp@tmp.com', 't', 'm', '3231321', 'fdsla;fj', 'male', 'https://picsum.photos/200');
+(3, 'tmp', '1234', 'tmp@tmp.com', 't', 'm', '3231321', 'fdsla;fj', 'male', 'https://picsum.photos/200'),
+(4, 'ahmad', '1234', 'ahmad@tmp.com', 'Ahmad', 'Alsharif', '1234', 'Hebron', 'male', 'https://picsum.photos/400'),
+(5, 'mo', '1234', 'mo@test.com', 'Mo', 'Ahmad', '1234', 'Hebron', 'male', 'https://picsum.photos/600'),
+(6, 'suhair', '1234', 'suhair@test.com', 'Suhair', 'Alsharif', '1234', 'Hebron', 'female', 'https://picsum.photos/100');
 
 --
 -- Indexes for dumped tables
@@ -176,19 +179,28 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`, `first-name`, `last-n
 -- Indexes for table `comment`
 --
 ALTER TABLE `comment`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `post-id` (`post-id`),
+  ADD KEY `commentedUser-id` (`commentedUser-id`),
+  ADD KEY `id` (`id`);
 
 --
 -- Indexes for table `friends`
 --
 ALTER TABLE `friends`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id` (`id`),
+  ADD KEY `user1-id` (`user1-id`),
+  ADD KEY `user2-id` (`user2-id`);
 
 --
 -- Indexes for table `like`
 --
 ALTER TABLE `like`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `likedUser-id` (`likedUser-id`),
+  ADD KEY `likedUser-id_2` (`likedUser-id`),
+  ADD KEY `post-id` (`post-id`);
 
 --
 -- Indexes for table `post`
@@ -196,13 +208,18 @@ ALTER TABLE `like`
 ALTER TABLE `post`
   ADD PRIMARY KEY (`id`),
   ADD KEY `user-id` (`user-id`),
-  ADD KEY `user-id_2` (`user-id`);
+  ADD KEY `user-id_2` (`user-id`),
+  ADD KEY `user-id_3` (`user-id`),
+  ADD KEY `user-id_4` (`user-id`),
+  ADD KEY `id` (`id`);
 
 --
 -- Indexes for table `request`
 --
 ALTER TABLE `request`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `userSent-id` (`userSent-id`),
+  ADD KEY `userRecieved-id` (`userRecieved-id`);
 
 --
 -- Indexes for table `user`
@@ -210,7 +227,9 @@ ALTER TABLE `request`
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`);
+  ADD UNIQUE KEY `email` (`email`),
+  ADD UNIQUE KEY `username_2` (`username`,`email`),
+  ADD KEY `id` (`id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -220,36 +239,77 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=94;
 
 --
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `like`
 --
 ALTER TABLE `like`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 
 --
 -- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-SET FOREIGN_KEY_CHECKS=1;
+  MODIFY `id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comment`
+--
+ALTER TABLE `comment`
+  ADD CONSTRAINT `comment-post-id` FOREIGN KEY (`post-id`) REFERENCES `post` (`id`),
+  ADD CONSTRAINT `comment-user-id` FOREIGN KEY (`commentedUser-id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `friends`
+--
+ALTER TABLE `friends`
+  ADD CONSTRAINT `user1-id` FOREIGN KEY (`user1-id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `user2-id` FOREIGN KEY (`user2-id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `like`
+--
+ALTER TABLE `like`
+  ADD CONSTRAINT `like-post-id` FOREIGN KEY (`post-id`) REFERENCES `post` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `like-user-id` FOREIGN KEY (`likedUser-id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `post`
+--
+ALTER TABLE `post`
+  ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`user-id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `request`
+--
+ALTER TABLE `request`
+  ADD CONSTRAINT `userRecieved-id` FOREIGN KEY (`userRecieved-id`) REFERENCES `user` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `userSent-id` FOREIGN KEY (`userSent-id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
