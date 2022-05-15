@@ -7,18 +7,17 @@
 		$commentedUserId = $_COOKIE['user-id'];
 		$query = $conn->prepare("INSERT INTO comment (`post-id`,`commentedUser-id`,content)
 				  VALUES (?, ?, ?)");
-		$query->bind_param('sss',$postId,$commentedUserId,$content);
+		$query->bind_param('iis',$postId,$commentedUserId,$content);
 		$query->execute();
 		$query->store_result();
-   		if($query->num_rows == 0){
-   			$q = "SELECT * FROM comment WHERE id = (SELECT max(id) FROM comment)";
-   			$res = mysqli_query($conn,$q);
-   			if($res) {
-   				$commentId = mysqli_fetch_assoc($res)['id'];
-   				return $commentId;
-   			} else echo mysqli_error($conn);
+   		
+		$q = "SELECT * FROM comment WHERE id = (SELECT max(id) FROM comment)";
+		$res = mysqli_query($conn,$q);
+		if($res) {
+			$commentId = mysqli_fetch_assoc($res)['id'];
+			return $commentId;
+		} else echo mysqli_error($conn);
   
-   		} else echo mysqli_error($conn);
 	}
 
 	function getComment($commentId){

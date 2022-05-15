@@ -42,7 +42,7 @@ function UserCard($userId, $firstName, $lastName, $imageUrl)
             <script>
                 $(document).ready(function(){
 
-                    function bindE(){
+                   
                         $('#send$userId').click(function(){
                         $.post('../controllers/handleRequest.php',{ 'second-user-id' : $userId, 'action': 'send' },
                         function(){
@@ -74,8 +74,8 @@ function UserCard($userId, $firstName, $lastName, $imageUrl)
                             $('#actions$userId').append(actions);
                         });
                     });
-                }
-                setInterval(bindE,3000);
+                
+                
                     
                 });
             </script>

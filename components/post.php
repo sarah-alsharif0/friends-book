@@ -6,6 +6,8 @@
 		include_once dirname(__DIR__)."/models/likes.php";
 		include_once dirname(__DIR__)."/models/comments.php";
 
+		$currUserImage = getUserInfo($_COOKIE['user-id'])["image-url"];
+
 		$userInfo = getUserInfo($userId);
 		$numberOfLikes = getNumberOfPostLikes($postId);
 		$numberOfComments = getNumberOfPostComments($postId);
@@ -17,7 +19,6 @@
 		$userImageUrl = $userInfo["image-url"];
 
 		$comments = getpostComments($postId);
-
 
 		return " 
 				<div class='post'>
@@ -31,7 +32,7 @@
 				  	<div class='post__content'>
 				  		
 					  	<p class='post__text'>$textContent</p>
-					". ($imageUrl?"<img src=$imageUrl>":"")."
+					". ($imageUrl?"<img src='$imageUrl'>":"")."
 				  	</div>
 				  	<br>
 				  	<ul class='post__interactions'>	
@@ -42,7 +43,7 @@
 				  	</ul>
 				  	<h4>Comments</h4>
 				  	<form class='form' id='$postId'>
-				  		<img src='$userImageUrl' class='post__userImage2'>
+				  		<img src='$currUserImage' class='post__userImage2'>
 				  	  	<input class='form__input' type='text' name='content' value='' placeholder='Write a comment...'>
 				  	  	<input type='hidden' name='postId' value=$postId>
 			  	  	<button class='form__button' type='submit' value='submit'>Add</button>

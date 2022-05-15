@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="../styles/post.css">
 	<link rel="stylesheet" type="text/css" href="../styles/comment.css">
 	<link rel="stylesheet" type="text/css" href="../styles/userCard.css">
+	<link rel="stylesheet" type="text/css" href="../styles/addPostForm.css">
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	
@@ -16,21 +17,34 @@
 	<title>Home</title>
 	<script>
 		$(document).ready(function() {
-			var oldData = "";
+			var oldPosts = "";
+			var oldUsers = "";
 			
-			// window.setInterval(()=>{
+			window.setInterval(()=>{
 				
-				$.get('../controllers/handlePosts.php', function(data) {
-					if(oldData === "")
-						oldData = data;
-					if(data !== oldData){
-						console.log('modified');
+				$.get('../controllers/handleGetPosts.php', function(data) {
+					if(oldPosts === "")
+						oldPosts = data;
+					if(data !== oldPosts){
 						$('#posts').empty();
 						$('#posts').append(data);
-						oldData = data;
+						oldPosts = data;
 					}
 				});
-			// },3000);
+				
+				$.get('../controllers/handleGetUsers.php', function(data) {
+					if(oldUsers === "")
+						oldUsers = data;
+					if(data !== oldUsers){
+						$('#add-friends').empty();
+						$('#add-friends').append(data);
+						oldUsers = data;
+					}
+				});
+
+			},10000);
+
+			
 
 		})
 	</script>
@@ -57,7 +71,7 @@
 
 	?>
 	<main class="main">
-		<section class="section__add-friends">
+		<section class="section__add-friends" id="add-friends">
 			<h3 class="add-friends__title">Add Friends</h3>
 			<br>
 			<div class='add-friends__users-list'>
@@ -79,8 +93,13 @@
 			?>
 
 		</section>
-		<section class="section__add-post">
+		<section class="section__add-post" >
+		<?php
 
+			include_once dirname(__DIR__) . "/components/addPostForm.php";
+
+			echo addPostForm();
+		?>
 		</section>
 	</main>
 	<script src="https://kit.fontawesome.com/0b1cfb088a.js" crossorigin="anonymous"></script>

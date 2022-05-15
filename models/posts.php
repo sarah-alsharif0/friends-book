@@ -5,12 +5,18 @@
 		require dirname(__DIR__)."/util/dbconnection.php";
 		include_once dirname(__DIR__)."/components/post.php";
 
-		$query = "SELECT friends.`user1-id` , friends.`user2-id`, post.* 
-				  FROM friends
-				  RIGHT JOIN post 
-				  ON post.`user-id` = friends.`user1-id` OR post.`user-id` = friends.`user2-id` 
-				  WHERE friends.`user1-id`='$userId' OR friends.`user2-id`='$userId'
-				  ORDER BY post.date DESC";
+		$query = "SELECT * FROM post 
+				  WHERE post.`user-id` = $userId OR `user-id` = (
+					SELECT `user2-id` FROM friends WHERE `user1-id` = $userId
+				  ) OR `user-id`= (SELECT `user1-id` FROM friends WHERE `user2-id` = $userId)
+				  ORDER BY `date` DESC";
+
+		// $query = "SELECT friends.`user1-id` , friends.`user2-id`, post.* 
+		// 		  FROM friends
+		// 		  RIGHT JOIN post 
+		// 		  ON post.`user-id` = friends.`user1-id` OR post.`user-id` = friends.`user2-id` 
+		// 		  WHERE friends.`user1-id`='$userId' OR friends.`user2-id`='$userId'
+		// 		  ORDER BY post.date DESC";
 
 		$result = mysqli_query($conn,$query);
 		if($result){
@@ -57,6 +63,20 @@
 		mysqli_close($conn);
 	}
 	
+	function addPost($imageUrl,$textContent){
+		require dirname(__DIR__)."/util/dbconnection.php";
+		
+		$userId = $_COOKIE['user-id'];
+		$date = date("Y-m-d H:i:s");
+
+		$query = $conn->prepare("INSERT INTO post (`user-id`,`image-url`,`text-content`,`date`)
+				  VALUES (?, ?, ?, ?)");
+		
+		$query->bind_param('isss',$userId,$imageUrl,$textContent,$date);
+		$query->execute();
+		$query->store_result();
+		
+	}
 
 
 	

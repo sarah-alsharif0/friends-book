@@ -1,0 +1,40 @@
+.add-post{
+    border: 1px solid rgba(128, 128, 128, 0.43);
+    padding: 1rem;
+    border-radius: 5px;
+}
+.add-post__title{
+    border-bottom: 1px solid rgba(128, 128, 128, 0.43);
+}
+.add-post__content-input {
+    font-size: 1.3rem;
+    margin: 0.5rem 0;
+    height: 10vh;
+    overflow-wrap: break-word;
+    border: none;
+    outline: none;
+    width: 100%;
+}
+.add-post__image{
+    border: 1px solid rgba(128, 128, 128, 0.43);
+    border-radius: 5px;
+    padding: 1rem;
+}
+.add-post__image-input {
+    outline:none;
+    width: 100%;
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    border: none;
+}
+.add-post__button{
+    margin-top: 1rem;
+    width: 100%;
+    background-color: #586e72d6;
+	padding:0.5rem 1.3rem;
+	border: none;
+	border-radius: 5px;
+	font-size: 1rem;
+	color: white;
+	cursor: pointer;
+}
