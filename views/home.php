@@ -42,9 +42,7 @@
 					}
 				});
 
-			},10000);
-
-			
+			},10000);			
 
 		})
 	</script>
@@ -55,16 +53,13 @@
 <body>
 
 	<?php
-	if (isset($_COOKIE["user-id"])) {
-		$userId = $_COOKIE["user-id"];
-
-		include dirname(__DIR__) . "/util/dbconnection.php";
-	} else {
+	if (!isset($_COOKIE["user-id"])) {
+		
 		header("location:sign-in.php");
 	}
-	?>
+	$userId = $_COOKIE["user-id"];
 
-	<?php
+	include dirname(__DIR__) . "/util/dbconnection.php";
 	include_once dirname(__DIR__) . "/components/navbar.php";
 
 	echo navbar("home");

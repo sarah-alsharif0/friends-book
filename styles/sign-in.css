@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    background: linear-gradient(135deg,#73bac9,#586e72);
+}
+.container{
+    max-width: 550px;
+    width: 76%;
+    background: #fff;
+    padding: 25px 30px;
+    border-radius: 5px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);       
+}
+.container .title{
+    align-items: center;
+    position: relative;
+    font-size: 25px;
+    font-weight: 600;
+}
+.container .title:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 30px;
+    border-radius: 5px;
+    background: linear-gradient(135deg,#73bac9,#586e72);
+}
+.container form .user_details{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 12px 0;
+}
+form .user_details .form__field-container{
+    margin-bottom: 15px;
+    width: calc(100% / 2 - 20px);
+}
+.user_details .form__field-container label{
+    font-weight:600;
+    display: block;
+    margin-bottom: 5px;
+}
+.user_details .form__field-container input{
+    height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
+}
+.user-details .form__field-container input:focus,
+.user-details .form__field-container input:valid{
+  border-color: #586e72;
+}
+form button{
+    height: 100%;
+    width: 19%;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding:9px 0px;
+    letter-spacing: 1px;
+    margin: 9px 0px 11px 193px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg,#73bac9,#586e72);
+}
+form button:hover{
+    /* transform: scale(0.99); */
+    /* transition: all 0.3s ease; */
+    background: linear-gradient(-135deg, #73bac9,#586e72);
+
+}
+ div .alert{
+    font-size: 14px;
+    color: red;
+}
+.routing_sign-up{
+    padding-top: 5px;
+    font-size: 12px;
+    text-align: center;
+    margin-left:125px;
+}
+.routing_sign-up>a{
+    color: #50676b;
+    cursor: pointer;
+}

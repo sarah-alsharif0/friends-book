@@ -279,7 +279,7 @@ ALTER TABLE `user`
 -- Constraints for table `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `comment-post-id` FOREIGN KEY (`post-id`) REFERENCES `post` (`id`),
+  ADD CONSTRAINT `comment-post-id` FOREIGN KEY (`post-id`) REFERENCES `post` (`id`) ON DELETE CASCADE,
   ADD CONSTRAINT `comment-user-id` FOREIGN KEY (`commentedUser-id`) REFERENCES `user` (`id`) ON DELETE CASCADE;
 
 --

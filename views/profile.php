@@ -1,24 +1,86 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../styles/navbar.css">
+	<link rel="stylesheet" type="text/css" href="../styles/profile.css">
+	<link rel="stylesheet" type="text/css" href="../styles/userInformation.css">
+	<link rel="stylesheet" type="text/css" href="../styles/post.css">
+	<link rel="stylesheet" type="text/css" href="../styles/comment.css">
+	<link rel="stylesheet" type="text/css" href="../styles/userCard.css">
+
 	<title>My Profile</title>
 </head>
+
 <body>
-	<?php 
-		if (isset($_COOKIE["user-id"])){
-		    $userId = $_COOKIE["user-id"];
 
-		    require dirname(__DIR__)."/util/dbconnection.php";
-		    require dirname(__DIR__)."/components/navbar.php";
+	<?php
+	if (!isset($_COOKIE["user-id"])) {
+		header("location:sign-in.php");
+	}
+	$userId = $_COOKIE["user-id"];
 
-		    echo navbar("profile");
+	require dirname(__DIR__) . "/util/dbconnection.php";
+	require dirname(__DIR__) . "/components/navbar.php";
+	require dirname(__DIR__) . "/components/userInformation.php";
+	require dirname(__DIR__) . "/models/posts.php";
+	require dirname(__DIR__) . "/models/users.php";
 
-		} else {
-		    header("location:sign-in.php");
-		}
+
+	echo navbar("profile");
+	// echo getUserPosts($userId);
+
 	?>
+	<main>
+		<section class="user-info__section">
+			<?php
+			echo userInformation();
+			?>
+		</section>
+		<div class="sections-wrapper">
+
+
+			<section class="user-friends__section">
+				<h3 class="user-friends__title">My Friends</h3>
+				<br>
+				<?php
+				echo getFriendsUsers($userId);
+				?>
+			</section>
+
+			<section class="user-posts__section">
+				<?php
+				echo getUserPosts($userId);
+				?>
+			</section>
+		</div>
+
+
+		<?php
+		if (isset($_GET['delete'])) {
+			if (($_GET['delete']) == 1) {
+		
+				echo "<script>
+					alert('Post Deleted Successfully')
+				</script>";
+
+				// header("location: ../views/profile.php");
+			}
+			if (($_GET['delete']) == 2) {
+			
+				echo "<script>
+					alert('Something Goes Wrong , Please Try Again Later')
+				</script>";
+		
+			}
+		}
+
+		?>
+
+		<main>
+			<script src="https://kit.fontawesome.com/0b1cfb088a.js" crossorigin="anonymous"></script>
 </body>
+
 </html>

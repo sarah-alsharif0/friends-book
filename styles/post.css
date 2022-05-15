@@ -5,7 +5,8 @@
 	border: 1px solid #586e7233;
 	border-radius: 3px;
 	max-width: 500px;
-	min-width: 180px;
+	
+	min-width: 500px;
 	padding: 1rem;
 }
 .post__userInfo {
@@ -67,10 +68,24 @@
 	display: flex;
 	align-items: center;
 }
-.post__interactions li {
+.post__interactions li,.post__adjustment li {
 	margin: 0 0.6rem 0.5rem 0.2rem;
 }
 .post__like-icon {
 	font-size: 1.3rem;
 	cursor: pointer;
+	
+}
+.post__adjustment{
+	height: 1.5rem;
+	/* background-color: royalblue; */
+	display: flex;
+	justify-content: flex-end;
+
+}
+.post__adjustment li a {
+	font-size: 1.4rem;
+	text-decoration: none;
+	cursor: pointer;
+	color: #586e72;
 }

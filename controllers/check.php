@@ -8,11 +8,12 @@
 
 		$query = "SELECT * FROM user WHERE username='$username' AND password='$password'";
 		$result = mysqli_query($conn,$query);
-
+		
 		if(mysqli_num_rows($result) > 0){
 
 			$userId = mysqli_fetch_assoc($result)['id'];
 			setcookie("user-id",$userId,time()+10000,'/');
+			// echo $userId;
 			header("location: ../index.php");
 
 		} else {

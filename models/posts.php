@@ -50,15 +50,13 @@
 			if(mysqli_num_rows($result) > 0 ){
 				$posts = "";
 				while($row = mysqli_fetch_assoc($result)){
-					$posts.=post($row['id'],$row['user-id'],$row['image-url'],$row['text-content'],$row['date']);								
+					$posts.= post($row['id'],$row['user-id'],$row['image-url'],$row['text-content'],$row['date']);								
 				}
 				return $posts;
 
 			} else echo "<h4 class='message'>No posts found</h4>";
 			
-		} else echo mysqli_error($conn);
-			 						
-		
+		} else echo mysqli_error($conn);		
 
 		mysqli_close($conn);
 	}
@@ -78,7 +76,22 @@
 		
 	}
 
+	function getPostToUpdate($postId){
+		require dirname(__DIR__)."/util/dbconnection.php";
 
-	
+		$query = "SELECT * FROM post WHERE `id`= $postId";
+		$result = mysqli_query($conn,$query);
+		
+		if(mysqli_num_rows($result) > 0 ){
+			$postInfo = mysqli_fetch_assoc($result);
+
+			$array=array("id"=> $postInfo['id'],"user-id"=>$postInfo['user-id'],
+							"image-url"=>$postInfo['image-url'],"text-content"=>$postInfo['text-content'],
+							"date"=>$postInfo['date']);
+			return $array;						
+	   } else echo "<h4 class='message'>Ops, No posts found !</h4>";
+
+
+}
 					
 ?>

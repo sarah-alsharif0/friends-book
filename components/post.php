@@ -1,30 +1,37 @@
 <?php 
-	
 	function post($postId,$userId,$imageUrl,$textContent,$date){
 
 		include_once dirname(__DIR__)."/models/users.php";
 		include_once dirname(__DIR__)."/models/likes.php";
 		include_once dirname(__DIR__)."/models/comments.php";
 
-		$currUserImage = getUserInfo($_COOKIE['user-id'])["image-url"];
+		$currUserId = $_COOKIE['user-id'];
+		$currUserImage = getUserInfo($currUserId)['image-url'];
 
 		$userInfo = getUserInfo($userId);
 		$numberOfLikes = getNumberOfPostLikes($postId);
 		$numberOfComments = getNumberOfPostComments($postId);
 		
 		$likeIcon = (isLiked($postId,$userId)?"<i class='fa-solid fa-heart post__like-icon'></i>":"<i class='fa-regular fa-heart post__like-icon'></i>");
+		
+		$updateIcon = ($userId == $currUserId?"<i class='fa-solid fa-pen-to-square'></i>":"");
+		$deleteIcon = ($userId == $currUserId?"<i class='fa-solid fa-trash-can'></i>":"");
 
-		$firstName = $userInfo["first-name"];
-		$lastName = $userInfo["last-name"];
-		$userImageUrl = $userInfo["image-url"];
+		$firstName =$userInfo['first-name'];
+		$lastName = $userInfo['last-name'];
+		$userImageUrl = $userInfo['image-url'];
 
 		$comments = getpostComments($postId);
 
-		return " 
-				<div class='post'>
+		return "<div class='post'>
+		            <ul class='post__adjustment'>	
+				  		<li><a href='../views/edit-post.php?post-id=$postId'>$updateIcon</a></li>
+				  		<li><a href='../controllers/deletePost.php?post-id=$postId'>$deleteIcon</a></li>
+				  	</ul>
+	
 					<div class='post__userInfo'>
 						<img src='$userImageUrl' class='post__userImage1'>
-						<div class='wrapper'>
+						<div>
 						<h4 class='post__userName'>$firstName $lastName</h4>
 						<h6>$date</h6>
 						</div>
@@ -42,7 +49,7 @@
 				  		<li><span id='noofcomments$postId'>$numberOfComments</span> Comments</li>
 				  	</ul>
 				  	<h4>Comments</h4>
-				  	<form class='form' id='$postId'>
+				  	<form class='form' id='form$postId'>
 				  		<img src='$currUserImage' class='post__userImage2'>
 				  	  	<input class='form__input' type='text' name='content' value='' placeholder='Write a comment...'>
 				  	  	<input type='hidden' name='postId' value=$postId>
@@ -59,13 +66,10 @@
 		  	  </div>
 		  	  <script> 
 					$(document).ready(function(){
-						var request;
-						$('#$postId').submit(function(event){
+						
+						$('#form$postId').submit(function(event){
 							event.preventDefault();
-
-							if(request){
-								request.abort();
-							}				
+			
 							var form = $(this);
 
 							var inputs = form.find('input, select, button, textarea');
