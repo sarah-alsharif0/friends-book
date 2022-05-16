@@ -8,7 +8,7 @@
     border-bottom: 1px solid rgba(128, 128, 128, 0.43);
 }
 .add-post__content-input {
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin: 0.5rem 0;
     height: 10vh;
     overflow-wrap: break-word;
@@ -32,15 +32,23 @@
     border: none;
 }
 .add-post__button{
-    margin-top: 1rem;
+    margin-top:.5rem;
+    height: 45px;
     width: 100%;
-    background-color: #586e72d6;
-	padding:0.5rem 1.3rem;
-	border: none;
-	border-radius: 5px;
-	font-size: 1rem;
-	color: white;
-	cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    padding:7px 0px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg,#73bac9,#586e72);
+}
+.add-post__button:hover{
+
+    background: linear-gradient(-135deg, #73bac9,#586e72);
 }
 @media screen and (max-width: 968PX) {
     .add-post__content-input {
@@ -58,6 +66,7 @@
     .add-post__button{
         margin-top: .8rem;
         border: none;
+        height: 35px;
         font-size: .8rem;
  
     }

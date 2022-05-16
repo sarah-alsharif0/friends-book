@@ -46,13 +46,19 @@
 	border-bottom: 1px solid #586e7250;
 }
 .form__button{
-	background-color: #586e72d6;
-	padding:0.5rem 1.3rem;
-	border: none;
-	border-radius: 20px;
-	font-size: 1rem;
-	color: white;
-	cursor: pointer;
+    margin-top:.5rem;
+    height: 42px;
+    width: 5rem;
+    border-radius: 5px;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    padding:7px 0px;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: linear-gradient(135deg,#73bac9,#586e72);
 }
 .form__button:hover{
 	background-color: #586e72;
@@ -74,6 +80,9 @@
 	font-size: 1.3rem;
 	cursor: pointer;
 	
+}
+.heart__color{
+	color: red;
 }
 .post__adjustment{
 	height: 1.5rem;
@@ -100,6 +109,10 @@
 .posts__message{
 	text-align:center;	
 }
+.form__button:hover{
+
+    background: linear-gradient(-135deg, #73bac9,#586e72);
+}
 @media screen and (max-width: 968px) {	
 	.post{
 		/* width: 100%; */
@@ -112,6 +125,9 @@
 	.form__input{
 		font-size: .8rem;
 	}
+	.form__button{
+		height: 35px;
+    font-size: .8rem;	}
 	
 }
 @media screen and (max-width: 860px) {
@@ -131,6 +147,7 @@
 	.post__adjustment li button i {
 		font-size: 1rem;
 	}
+	
   }
   @media screen and (max-width: 760px) {
 	.comment_container{

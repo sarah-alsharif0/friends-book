@@ -12,7 +12,9 @@
 		$numberOfLikes = getNumberOfPostLikes($postId);
 		$numberOfComments = getNumberOfPostComments($postId);
 		
-		$likeIcon = (isLiked($postId,$userId)?"<i class='fa-solid fa-heart post__like-icon'></i>":"<i class='fa-regular fa-heart post__like-icon'></i>");
+		$likeIcon = (isLiked($postId,$userId)?"<i class='fa-solid heart__color fa-heart post__like-icon'>
+		<?php
+		?></i>":"<i class='fa-regular fa-heart post__like-icon'></i>");
 		
 		$updateIcon = ($userId == $currUserId?"<a href='../views/edit-post.php?post-id=$postId'><i class='fa-solid fa-pen-to-square'></i></a>":"");
 		$deleteIcon = ($userId == $currUserId?"<button id='delete$postId'><i class='fa-solid fa-trash-can' ></i></button>":"");
@@ -105,7 +107,7 @@
 								likeRequest.abort();
 							}
 							$.post('../controllers/handleLike.php',{ postId : $postId },function(data){
-								var icon  =  (data?\"<i class='fa-solid fa-heart post__like-icon'></i>\":\"<i class='fa-regular fa-heart post__like-icon'></i>\");
+								var icon  =  (data?\"<i class='fa-solid heart__color fa-heart post__like-icon'></i>\":\"<i class='fa-regular fa-heart post__like-icon'></i>\");
 								$('#like$postId').empty();
 								$('#like$postId').append(icon);
 								var numberOfLikes = $('#nooflikes$postId').html();
