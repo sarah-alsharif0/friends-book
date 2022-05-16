@@ -83,11 +83,21 @@
 	justify-content: flex-end;
 
 }
-.post__adjustment li a {
+
+.post__adjustment li a i{
 	font-size: 1.4rem;
 	text-decoration: none;
 	cursor: pointer;
 	color: #586e72;
+}
+.post__adjustment li button{
+	background: none;
+	border: none;
+	cursor: pointer;
+	color: #586e72;
+}
+.post__adjustment li button i {
+	font-size: 1.4rem;
 }
 .posts__message{
 	text-align:center;	

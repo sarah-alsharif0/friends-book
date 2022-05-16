@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="../styles/comment.css">
 	<link rel="stylesheet" type="text/css" href="../styles/userCard.css">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<title>My Profile</title>
 </head>
 
@@ -50,35 +51,12 @@
 				?>
 			</section>
 
-			<section class="user-posts__section">
+			<section class="user-posts__section" id="posts">
 				<?php
 				echo getUserPosts($userId);
 				?>
 			</section>
 		</div>
-
-
-		<?php
-		if (isset($_GET['delete'])) {
-			if (($_GET['delete']) == 1) {
-		
-				echo "<script>
-					alert('Post Deleted Successfully')
-				</script>";
-
-				// header("location: ../views/profile.php");
-			}
-			if (($_GET['delete']) == 2) {
-			
-				echo "<script>
-					alert('Something Goes Wrong , Please Try Again Later')
-				</script>";
-		
-			}
-		}
-
-		?>
-
 		<main>
 			<script src="https://kit.fontawesome.com/0b1cfb088a.js" crossorigin="anonymous"></script>
 </body>

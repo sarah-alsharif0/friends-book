@@ -66,10 +66,10 @@
 
 	?>
 	<main class="main">
-		<section class="section__add-friends" id="add-friends">
+		<section class="section__add-friends" >
 			<h3 class="add-friends__title">Add Friends</h3>
 			<br>
-			<div class='add-friends__users-list'>
+			<div class='add-friends__users-list' id="add-friends">
 				<?php
 
 				include_once dirname(__DIR__) . "/models/users.php";

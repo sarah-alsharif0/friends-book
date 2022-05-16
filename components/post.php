@@ -14,8 +14,8 @@
 		
 		$likeIcon = (isLiked($postId,$userId)?"<i class='fa-solid fa-heart post__like-icon'></i>":"<i class='fa-regular fa-heart post__like-icon'></i>");
 		
-		$updateIcon = ($userId == $currUserId?"<i class='fa-solid fa-pen-to-square'></i>":"");
-		$deleteIcon = ($userId == $currUserId?"<i class='fa-solid fa-trash-can'></i>":"");
+		$updateIcon = ($userId == $currUserId?"<a href='../views/edit-post.php?post-id=$postId'><i class='fa-solid fa-pen-to-square'></i></a>":"");
+		$deleteIcon = ($userId == $currUserId?"<button id='delete$postId'><i class='fa-solid fa-trash-can' ></i></button>":"");
 
 		$firstName =$userInfo['first-name'];
 		$lastName = $userInfo['last-name'];
@@ -23,10 +23,10 @@
 
 		$comments = getpostComments($postId);
 
-		return "<div class='post'>
+		return "<div class='post' id='post$postId'>
 		            <ul class='post__adjustment'>	
-				  		<li><a href='../views/edit-post.php?post-id=$postId'>$updateIcon</a></li>
-				  		<li><a href='../controllers/deletePost.php?post-id=$postId'>$deleteIcon</a></li>
+				  		<li>$updateIcon</li>
+				  		<li>$deleteIcon</li>
 				  	</ul>
 	
 					<div class='post__userInfo'>
@@ -113,7 +113,17 @@
 							});
 						});
 
-					});
+						$('#delete$postId').click(function(event){
+							event.preventDefault();
+													
+							$.post('../controllers/handleDeletePost.php',{postId: $postId},function(data){
+								console.log(data);
+								if(data){
+									$('#post$postId').remove();
+								}
+							});
+						});
+						});
 				</script>
 		  	  ";
 	} 
