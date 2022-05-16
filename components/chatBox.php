@@ -51,11 +51,12 @@ function chatBox($userId)
             $('#content').prop('value','');
             inputs.prop('disabled', false);
         });
-         window.setInterval(()=>{
-            getMessages({userId: $userId});
-        },10000)
+        
     })
    
     </script>
 ";
 }
+//  window.setInterval(()=>{
+//             getMessages({userId: $userId});
+//         },10000)
