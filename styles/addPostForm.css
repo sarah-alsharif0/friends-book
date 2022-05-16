@@ -4,16 +4,20 @@
     border-radius: 5px;
 }
 .add-post__title{
+    font-size: 1.1rem;
     border-bottom: 1px solid rgba(128, 128, 128, 0.43);
 }
 .add-post__content-input {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin: 0.5rem 0;
     height: 10vh;
     overflow-wrap: break-word;
     border: none;
     outline: none;
     width: 100%;
+}   
+.add-post__image label{
+    font-size: .89rem;
 }
 .add-post__image{
     border: 1px solid rgba(128, 128, 128, 0.43);
@@ -38,3 +42,36 @@
 	color: white;
 	cursor: pointer;
 }
+@media screen and (max-width: 968PX) {
+    .add-post__content-input {
+        font-size: .7rem;
+        margin: 0rem;
+        height: 9vh;
+    }   
+    .add-post__image label{
+        font-size: .73rem;
+        font-weight: 600;
+    }
+    .add-post__image-input{
+        font-size: .8rem;
+    }
+    .add-post__button{
+        margin-top: .8rem;
+        border: none;
+        font-size: .8rem;
+ 
+    }
+}
+@media screen and (max-width: 860px) {
+    .add-post__image-input{
+        font-size: .74rem;
+    }
+  }
+@media screen and (max-width: 760px) {
+    .add-post__content-input {
+        font-size: .64rem;
+    }
+    .add-post__image-input{
+        font-size: .67rem;
+    }
+  }

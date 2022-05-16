@@ -48,7 +48,7 @@
 				  		<li><span id='nooflikes$postId'>$numberOfLikes</span> Likes</li>
 				  		<li><span id='noofcomments$postId'>$numberOfComments</span> Comments</li>
 				  	</ul>
-				  	<h4>Comments</h4>
+				  	<h4 class='comment_container'>Comments</h4>
 				  	<form class='form' id='form$postId'>
 				  		<img src='$currUserImage' class='post__userImage2'>
 				  	  	<input class='form__input' type='text' name='content' id='content$postId' placeholder='Write a comment...'>

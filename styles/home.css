@@ -2,9 +2,11 @@
 	box-sizing: border-box;
 }
 .main {
-	padding-top: 8rem;
+	padding-top: 7rem;
 	display: flex;
-	justify-content: space-between;
+	/* justify-content: center; */
+	width: 100%;
+	justify-content: space-evenly;
 
 }
 .section__add-friends,
@@ -15,14 +17,18 @@
 	height: fit-content;
 	/* border-right: 1px solid grey; */
 	padding: 2rem;
-	width: 30%;
+	width:30%;
 }
 .section__posts{
 	width: 40%;
 }
 section{
+	margin-top: 1rem;
 	margin-left: 1rem;
 	margin-right: 1rem;
+}
+.section__add-friends{
+	margin-top: 1rem;
 }
 .add-friends__title{
 	/* width: fit-content; */
@@ -47,3 +53,39 @@ section{
     color: transparent;
     text-shadow: #586e72 0px 3px 3px;
 }
+@media screen and (max-width: 968px) {
+	.main{
+		padding-top: 5rem;
+
+	}
+	section{
+		margin-left: .5rem;
+		margin-right: .5rem;
+	}
+	.add-friends__title{
+		padding: 0.1rem;
+		align-self: center;
+		border-bottom: 1px solid rgba(128, 128, 128, 0.255);
+	}	
+	.section__add-friends,
+.section__add-post{
+	width: 30%;
+}
+
+  }
+  @media screen and (max-width: 860px) {
+	  main{
+		  flex-direction: row;
+	  }
+    section {
+		margin-left: 0.2rem;
+		margin-right: 0.2rem;
+	}
+	.add-friends__title{
+		font-size: 1.1rem;
+	}
+  }
+  @media screen and (max-width: 740px) {
+   
+  }
+ 

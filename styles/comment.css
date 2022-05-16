@@ -11,8 +11,25 @@
 .comment__user-name{
 	font-size: 0.9rem;
 }
+.comment__content >p{
+	font-size: .8rem;
+
+}
 .comment__content{
 	background-color: #8080802e;
 	border-radius: 10px;
 	padding: 0.5rem;
 }
+@media screen and (max-width: 968px) {
+    .comment__user-name{
+		font-size: 0.8rem;
+	}
+	.comment__userImage{
+		width: 3rem;
+		border-radius: 50px;
+		margin: 0.3rem 0.3rem;
+	}
+	.comment{
+		margin: .2rem -.3rem;
+	}
+  }

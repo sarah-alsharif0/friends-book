@@ -46,3 +46,14 @@ section{
     color: transparent;
     text-shadow: #586e72 0px 3px 3px;
 }
+
+
+@media screen and (max-width: 860px) {
+	.user-friends__section,
+.user-posts__section{
+	padding: 0rem 1rem 0rem 1rem;
+}
+}
+@media screen and (max-width: 740px) {
+ 
+}

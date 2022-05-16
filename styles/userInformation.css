@@ -27,7 +27,7 @@
 }
 .line{
     margin-top: 1.5rem;
-    margin-left: 3.5rem;
+    margin-left: 1.5rem;
     width: 70rem;
     height: 4px;
     background-color: #586e72;
@@ -38,7 +38,7 @@
     flex-direction: column;
 }
 .about ,.friends__list{
-    margin: 1.2rem 0rem 0rem 9rem;
+    margin: 2rem 0rem 0rem 9  rem;
 }
 .about__div{
     width: 70%;
@@ -52,6 +52,8 @@
 }
 .about>h2,.friends__list>h2{
     font-size: 1.4rem;
+    padding-left: 6rem;
+    padding-top: 1rem;
     color: rgb(88, 87, 87);
 }
 .bold__span,.user__name{
@@ -71,4 +73,26 @@ span{
     border-radius: 50%;
     padding-right: 1rem;
 }
+@media screen and (max-width: 968px) {
+    .wrapper{
+        padding: 1rem 6rem 0rem 0rem;
 
+    }
+    .profile__img{  
+        width: 12rem;
+        height: 12rem;
+        border-radius: 50%;
+        padding-right: 1rem;
+    }
+    .line{
+        margin-left: .5rem;
+        width: 48rem;
+        height: 4px;
+
+    }
+    .about, .friends__list {
+        margin: 1.2rem 0rem 0rem 2rem;
+    }
+    .about__div {
+        width: 80%;}
+}

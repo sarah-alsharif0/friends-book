@@ -11,6 +11,7 @@
 	<link rel="stylesheet" type="text/css" href="../styles/userCard.css">
 	<link rel="stylesheet" type="text/css" href="../styles/addPostForm.css">
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	
 
@@ -63,10 +64,9 @@
 	include_once dirname(__DIR__) . "/components/navbar.php";
 
 	echo navbar("home");
-
 	?>
 	<main class="main">
-		<section class="section__add-friends" >
+		<section class="section__add-friends" id="first">
 			<h3 class="add-friends__title">Add Friends</h3>
 			<br>
 			<div class='add-friends__users-list' id="add-friends">
@@ -79,7 +79,7 @@
 			</div>
 			
 		</section>
-		<section id="posts" class="section__posts">
+		<section id="posts" class="section__posts" >
 
 			<?php
 			include_once dirname(__DIR__) . "/models/posts.php";
@@ -88,7 +88,7 @@
 			?>
 
 		</section>
-		<section class="section__add-post" >
+		<section class="section__add-post" id="second" >
 		<?php
 
 			include_once dirname(__DIR__) . "/components/addPostForm.php";
@@ -97,6 +97,25 @@
 		?>
 		</section>
 	</main>
+	<script>
+		var windowThreshold = 768;
+
+$(window).resize(function() {
+  if ($(window).width() < windowThreshold + 1) {
+	$( "#second" ).insertBefore( "#first" );
+	$( "#posts" ).insertBefore( "#first" );
+
+	console.log("ok");
+  }else if($(window).width() > windowThreshold + 1){ 
+	$( "#first" ).insertBefore( "#second" );
+	$( "#posts" ).insertBefore( "#second" );
+
+	// $( "#posts" ).insertBefore( "#first" );
+	// $( "#first" ).insertBefore( "#second" );
+  }
+  
+});
+	</script>
 	<script src="https://kit.fontawesome.com/0b1cfb088a.js" crossorigin="anonymous"></script>
 </body>
 

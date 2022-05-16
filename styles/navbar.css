@@ -49,3 +49,26 @@ body{
 a.logOut{
 	color: white;
 }
+@media screen and (max-width: 665px) {
+	body{
+		height: 30px;
+	}
+	.navbar{
+			padding: 0.4rem 1.8rem;
+	}
+	.navbar__logo1 {
+		width: 40px;
+		margin: 0 5px 0 0;
+	}
+	.navbar__list-item {
+		margin: 0 .6rem;
+		font-size: 1rem;
+	}
+}
+@media screen and (max-width: 760px) {
+
+	.navbar{
+		padding: 0.2rem 1.8rem;
+}
+  
+  }

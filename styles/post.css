@@ -1,13 +1,11 @@
 .post{
 	display: flex;
 	flex-direction: column;
-	margin: 2rem auto;
+	margin: 2rem 0rem;
 	border: 1px solid #586e7233;
 	border-radius: 3px;
-	max-width: 500px;
-	
-	min-width: 500px;
-	padding: 1rem;
+	width: 110%;
+    padding: .7rem 1rem 1rem 1rem;
 }
 .post__userInfo {
 	display: flex;
@@ -71,6 +69,7 @@
 .post__interactions li,.post__adjustment li {
 	margin: 0 0.6rem 0.5rem 0.2rem;
 }
+
 .post__like-icon {
 	font-size: 1.3rem;
 	cursor: pointer;
@@ -83,7 +82,6 @@
 	justify-content: flex-end;
 
 }
-
 .post__adjustment li a i{
 	font-size: 1.4rem;
 	text-decoration: none;
@@ -102,3 +100,46 @@
 .posts__message{
 	text-align:center;	
 }
+@media screen and (max-width: 968px) {	
+	.post{
+		/* width: 100%; */
+		width: 380px;
+	}
+	.post__adjustment{
+		height: 1.3rem;
+	}
+	
+	.form__input{
+		font-size: .8rem;
+	}
+	
+}
+@media screen and (max-width: 860px) {
+	.post{
+		width: 100%;
+	}
+	.form__button{
+	
+		padding:0.5rem 1.3rem;
+		font-size: .8rem;
+	}
+	.post__userImage2{
+		width: 3rem;
+		border-radius: 50px;
+		margin: 0.5rem 0rem 0.5rem 0 ;
+	}
+	.post__adjustment li button i {
+		font-size: 1rem;
+	}
+  }
+  @media screen and (max-width: 760px) {
+	.comment_container{
+		font-size: .9rem;
+	}
+	.post__interactions li {
+		font-size: .8rem;
+	}
+	.post__adjustment li button i {
+		font-size: .8rem;
+	}
+  }

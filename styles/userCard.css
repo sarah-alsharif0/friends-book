@@ -21,7 +21,7 @@
 .actions__button{
 	background: none;
 	border: none;
-	font-size: 0.8rem;
+	font-size: 1.4rem;
 	cursor: pointer;
 }
 .user-card__actions{
@@ -29,10 +29,46 @@
     justify-content: flex-end;
 }
 .request-icon{
-    font-size: 1.7rem;
+    font-size: 1.4rem;
     color: #586e72;
     margin: 0.2rem 0.5rem;
 }
 .disabled {
     color: rgba(128, 128, 128, 0.488);
 }
+@media screen and (max-width: 860px) {
+    .users-list__user-card {
+        padding:.5rem;
+        font-weight: 600;
+    }
+    .actions__button i{
+      
+        font-size: 1rem;
+  
+    }
+    .request-icon{
+        font-size: 1rem;
+    }
+  }
+
+@media screen and (max-width: 740px) {
+    
+    .actions__button i{
+        background: none;
+        border: none;
+        font-size: 0.8rem;
+        cursor: pointer;
+    }
+    .users-list__user-card{
+        padding: .6rem;
+    }
+
+    .actions__button i{
+        background: none;
+        border: none;
+        font-size: 0.6rem;
+        cursor: pointer;
+    }
+   
+  }
+
