@@ -41,12 +41,10 @@ function UserCard($userId, $firstName, $lastName, $imageUrl)
             </div>
             <script>
                 $(document).ready(function(){
-
                    
                         $('#send$userId').click(function(){
                         $.post('../controllers/handleRequest.php',{ 'second-user-id' : $userId, 'action': 'send' },
-                        function(){
-                            console.log('from send');                        
+                        function(){                    
                             var actions = \"<button class='actions__button' disabled>$sendIconDisabled</button>\";
                             $('#actions$userId').empty();
                             $('#actions$userId').append(actions);

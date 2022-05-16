@@ -5,21 +5,24 @@
 		require dirname(__DIR__)."/util/dbconnection.php";
 
 		$commentedUserId = $_COOKIE['user-id'];
+		$content = htmlspecialchars($content);
 
-		$query =mysqli_prepare($conn,"INSERT INTO comment (`post-id`,`commentedUser-id`,content)
-				  VALUES (?, ?, ?)");
-		mysqli_stmt_bind_param($query,'iis',$postId,$commentedUserId,$content);
-		mysqli_stmt_execute($query);
-		
-		$query = "SELECT * FROM comment WHERE id = (SELECT max(id) FROM comment)";
-		$result = mysqli_query($conn,$query);
+		$query = "INSERT INTO comment (`post-id`,`commentedUser-id`,content)
+				  VALUES ($postId,$commentedUserId,'$content')";
+		$result = $conn->query($query);
 		if($result){
-			$row = mysqli_fetch_assoc($result);
-			$commentId = $row['id'];
-			return $commentId;
-		}
+			$lastId = $conn->insert_id;
+			return $lastId;
+		} else echo $conn->error;
+		// $query = "SELECT * FROM comment WHERE id = (SELECT max(id) FROM comment)";
+		// $result = mysqli_query($conn,$query);
+		// if($result){
+		// 	$row = mysqli_fetch_assoc($result);
+		// 	$commentId = $row['id'];
+		// 	return $commentId;
+		// }
 		
-		else echo mysqli_error($conn);
+		// else echo mysqli_error($conn);
   
 	}
 

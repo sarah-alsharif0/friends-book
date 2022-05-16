@@ -51,8 +51,8 @@
 				  	<h4>Comments</h4>
 				  	<form class='form' id='form$postId'>
 				  		<img src='$currUserImage' class='post__userImage2'>
-				  	  	<input class='form__input' type='text' name='content' value='' placeholder='Write a comment...'>
-				  	  	<input type='hidden' name='postId' value=$postId>
+				  	  	<input class='form__input' type='text' name='content' id='content$postId' placeholder='Write a comment...'>
+				  	  	<input type='hidden' name='postId' value='$postId'>
 			  	  	<button class='form__button' type='submit' value='submit'>Add</button>
 			  	  </form>
 			  	 
@@ -66,10 +66,13 @@
 		  	  </div>
 		  	  <script> 
 					$(document).ready(function(){
-						
+						var commentRequest,likeRequest;
 						$('#form$postId').submit(function(event){
+							
 							event.preventDefault();
-			
+							if (commentRequest) {
+								commentRequest.abort();
+							}
 							var form = $(this);
 
 							var inputs = form.find('input, select, button, textarea');
@@ -88,17 +91,18 @@
 									if(+numberOfComments === 0){
 										$('#message').remove();
 									}
+									
 									$('#comments$postId').append(data);
 									$('#noofcomments$postId').html(+numberOfComments+1);
-									inputs.prop('value','');
+									$('#content$postId').prop('value','');
 									inputs.prop('disabled', false);
 							});
 						});
 						$('#like$postId').click(function(event){
 
 							event.preventDefault();
-							if(request){
-								request.abort();
+							if(likeRequest){
+								likeRequest.abort();
 							}
 							$.post('../controllers/handleLike.php',{ postId : $postId },function(data){
 								var icon  =  (data?\"<i class='fa-solid fa-heart post__like-icon'></i>\":\"<i class='fa-regular fa-heart post__like-icon'></i>\");

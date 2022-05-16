@@ -18,7 +18,6 @@
                 $(document).ready(function(){
                     var request;
                     $('#add-post-form').submit(function(event){
-                        console.log('submitted');
                         event.preventDefault();
 
                         if(request){
@@ -33,7 +32,6 @@
                         inputs.prop('disabled', true);
                         
                         $.post('../controllers/handleAddPost.php',serializedData,function(data){
-                            console.log(data);
                                 if(!data){
                                     inputs.prop('disabled', false);
                                     return false;

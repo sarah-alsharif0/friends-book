@@ -6,9 +6,9 @@
 		include_once dirname(__DIR__)."/components/post.php";
 
 		$query = "SELECT * FROM post 
-				  WHERE post.`user-id` = $userId OR `user-id` = (
+				  WHERE post.`user-id` = $userId OR `user-id` IN (
 					SELECT `user2-id` FROM friends WHERE `user1-id` = $userId
-				  ) OR `user-id`= (SELECT `user1-id` FROM friends WHERE `user2-id` = $userId)
+				  ) OR `user-id` IN (SELECT `user1-id` FROM friends WHERE `user2-id` = $userId)
 				  ORDER BY `date` DESC";
 
 		// $query = "SELECT friends.`user1-id` , friends.`user2-id`, post.* 
@@ -27,7 +27,7 @@
 				}
 				return $posts;
 			} else {
-				return "<h3 class='message'>No posts found</h3>";
+				return "<h3 class='posts__message'>No posts found</h3>";
 			}
 		} else {
 			echo mysqli_error($conn);
@@ -54,7 +54,7 @@
 				}
 				return $posts;
 
-			} else echo "<h4 class='message'>No posts found</h4>";
+			} else echo "<h4 class='posts__message'>No posts found</h4>";
 			
 		} else echo mysqli_error($conn);		
 

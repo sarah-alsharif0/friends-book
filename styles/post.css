@@ -89,3 +89,6 @@
 	cursor: pointer;
 	color: #586e72;
 }
+.posts__message{
+	text-align:center;	
+}
