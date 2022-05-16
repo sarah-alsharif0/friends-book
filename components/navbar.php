@@ -3,6 +3,7 @@
 
 		$homePageItemClasses = "navbar__list-item ". ($currPage == "home"?"active":"");
 		$profilePageItemClasses = "navbar__list-item ". ($currPage == "profile"?"active":"");
+		$chatPageItemClasses = "navbar__list-item ". ($currPage == "chat"?"active":"");
 	
 		return "<nav class='navbar'>
 					<div class='navbar__logo-container'>
@@ -19,13 +20,18 @@
 							</a>
 						</li>
 						<li>
+						<a href='../views/chat.php' class ='$chatPageItemClasses'>Chat</a>
+						</li>
+						<li>
 							<a href='../views/profile.php' class='$profilePageItemClasses'>
 							My Profile
 						</a>
 						</li>
 						<li>
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<a href='../controllers/log-out.php' class ='logOut'>log out</a>
 						</li>
+						
 					</ul>
 				</nav>
 			   ";

@@ -15,15 +15,15 @@
 	   isset($_POST['image-url']) 
 		){
 		
-	$username = $_POST['username'];
-	$password = $_POST['password'];
-	$firstName = $_POST['first-name'];
-	$lastName = $_POST['last-name'];
-	$gender = $_POST['gender'];
-	$email = $_POST['email'];
-	$address = $_POST['address'];
-	$teleNo = $_POST['teleNo'];
-	$imageUrl = $_POST['image-url'];
+	$username = htmlspecialchars($_POST['username']);
+	$password = htmlspecialchars($_POST['password']);
+	$firstName = htmlspecialchars($_POST['first-name']);
+	$lastName = htmlspecialchars($_POST['last-name']);
+	$gender = htmlspecialchars($_POST['gender']);
+	$email = htmlspecialchars($_POST['email']);
+	$address = htmlspecialchars($_POST['address']);
+	$teleNo = htmlspecialchars($_POST['teleNo']);
+	$imageUrl = htmlspecialchars($_POST['image-url']);
 
 	$username =strip_tags($username);
     $username =str_replace(' ','',$username);

@@ -2,6 +2,7 @@
 function UserCard($userId, $firstName, $lastName, $imageUrl)
 {
     include_once dirname(__DIR__) . "/models/users.php";
+    include_once dirname(__DIR__) . "/components/chatBox.php";
     include_once dirname(__DIR__) . "/controllers/handleRequest.php";
 
     $currUserId = $_COOKIE['user-id'];
@@ -17,6 +18,7 @@ function UserCard($userId, $firstName, $lastName, $imageUrl)
 
     $actions = "";
     $requestId = checkForFriendRequest($currUserId,$userId)?getRequestId($currUserId,$userId):(checkForFriendRequest($userId,$currUserId)?getRequestId($userId,$currUserId):0);
+    $chatBox = "";
 
     if($isReqSent){
         $actions = "<button class='actions__button' disabled>$sendIconDisabled</button>";
@@ -34,7 +36,6 @@ function UserCard($userId, $firstName, $lastName, $imageUrl)
                     <img class='user-info__image' src=$imageUrl>
                     <span class='user-info__name'>$firstName $lastName</span>
                 </div>
-                
                 <div class='user-card__actions' id='actions$userId'>
                     $actions
                 </div>
@@ -72,7 +73,15 @@ function UserCard($userId, $firstName, $lastName, $imageUrl)
                             $('#actions$userId').append(actions);
                         });
                     });
-                
+                    
+                    $('#userCard$userId').click(function(e){
+                        e.preventDefault();
+                        console.log('clicked');
+                        $.get('../controllers/getChatBox.php?userId=$userId',function(data){
+                            $('#chat__messages').empty();
+                            $('#chat__messages').append(data);
+                        });
+                    });
                 
                     
                 });

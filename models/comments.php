@@ -14,15 +14,6 @@
 			$lastId = $conn->insert_id;
 			return $lastId;
 		} else echo $conn->error;
-		// $query = "SELECT * FROM comment WHERE id = (SELECT max(id) FROM comment)";
-		// $result = mysqli_query($conn,$query);
-		// if($result){
-		// 	$row = mysqli_fetch_assoc($result);
-		// 	$commentId = $row['id'];
-		// 	return $commentId;
-		// }
-		
-		// else echo mysqli_error($conn);
   
 	}
 

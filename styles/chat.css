@@ -1,14 +1,9 @@
 main{
-    padding: 2rem 2rem;
-    display: flex;
-    flex-direction: row;
-    width: 100%;
+    padding-top: 8rem;
+	display: flex;
+	justify-content: space-between;
 }
-/* .wrapper{
-    display: flex;
-    flex-direction: row;
-} */
-.wrapper{
+.messages__wrapper{
 	display: flex;
     flex-direction: row;
     justify-content: center;
@@ -31,15 +26,52 @@ main{
     border-radius: 50%;
     padding-right: 1rem;
 }
-.messageForm{
+.messagesForm{
     height: 100%;
     width: 70%;
     padding: 3rem 2rem 1rem 2rem ;
-
 }
-.mesasgeContainer{
-    height: 100%;
+.chat__message{
+    text-align:center;
+}
+.container-message__sender{
+    display: flex;
+    flex-direction:column;
+    align-items: flex-end;
+}
+.container-message__reciever{
+    display: flex;
+    flex-direction:column;
+}
+.message__sender{
+    background-color:rgba(70, 134, 163, 0.753);
+    border-radius: 5px;
+    width: fit-content;
+    margin: 1rem 1rem 0.1rem 1rem;
+    padding: 1rem;
+    color: white;
+    font-weight: 500;
+}
+.message__reciever{
+    background-color:rgba(176, 176, 177, 0.753);
+    border-radius: 5px;
+    width: fit-content;
+    margin: 1rem 1rem 0.1rem 1rem;
+    padding: 1rem;
+    color: black;
+    font-weight: 500;
+}
+.message__content{
+    font-size: 1.1rem;
+}
+.message__date{
+    font-size: 0.7rem;
+    margin: 0 1rem;
+}
+.messageContainer{
+    height: 30rem;
     width: 100%;
+    overflow-y: scroll;
     outline: none;
     font-size: 16px;
     border-radius: 5px;
@@ -47,11 +79,12 @@ main{
     border: 1px solid #ccc;
     border-bottom-width: 2px;
     transition: all 0.3s ease;
+    padding: 1rem;
 }
 #send-btn{
     margin-top:.5rem;
     height: 45px;
-    width: 10%;
+    width: 5rem;
     border-radius: 5px;
     border: none;
     color: #fff;
