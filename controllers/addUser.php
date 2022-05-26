@@ -49,27 +49,18 @@
     $password =str_replace(' ','',$password);
 
 
-
-	if(preg_match('/[^A-Za-z0-9]/',$username)){
-		$error=4;
-		header("location: ../views/sign-up.php?error=4");		
-
-	}else{
-		
-	
-
 	$user_check = mysqli_query($conn, "SELECT * FROM user WHERE username='$username'");
 	$email_check =mysqli_query($conn, "SELECT * FROM user WHERE email='$email'");
 
     $user_num_rows = mysqli_num_rows($user_check);
 	$email_num_rows = mysqli_num_rows($email_check);
 
-        if($user_num_rows>0 && $email_num_rows>0){
+        if($user_num_rows>0 && $email_num_rows>0){ // username and email are used
             $error=3;
         }
-		if($user_num_rows==0 && $email_num_rows>0){
+		if($user_num_rows==0 && $email_num_rows>0){ // email is used
 			$error =2;
-		}else if($user_num_rows>0 && $email_num_rows==0){
+		}else if($user_num_rows>0 && $email_num_rows==0){ // username is used
 			$error=1;
 		}
 	if($error == 0){
@@ -97,5 +88,5 @@
 }else  if($error ==3){
    header("location: ../views/sign-up.php?error=3");		
 }
-}}
+}
 ?>

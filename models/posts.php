@@ -68,6 +68,9 @@
 		$query->execute();
 		$query->store_result();
 	}
+	function updatePost($postId, $imageUrl, $textContent){
+		
+	}
 
 	function getPostToUpdate($postId)
 	{

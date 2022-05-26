@@ -53,10 +53,7 @@ function chatBox($userId)
         });
         
     })
-   
+    
     </script>
 ";
 }
-//  window.setInterval(()=>{
-//             getMessages({userId: $userId});
-//         },10000)

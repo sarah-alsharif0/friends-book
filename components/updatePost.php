@@ -19,7 +19,7 @@ function getPostInfo(){
         $date = $postInfo['date'];
         $postContent= $postInfo["text-content"];
         $postContent =strip_tags($postContent);;
-        $postContentcheck = ($postContent?"<input type='text' name='postContent' value='$postContent'><br>":"<input type='text' name='imagePost' placeholder='Add Text'><br>");
+        $postContentcheck = ($postContent?"<input type='text' name='postContent' value='$postContent'><br>":"<input type='text' name='postContent' placeholder='Add Text'><br>");
         echo "<div>
                <form method ='post' id='edit__postForm'>
                 <div class='post__userInfo'>
@@ -45,22 +45,22 @@ function getPostInfo(){
         ";
         if(isset($_POST['update'])){
 
-           
-            $textContent = (isset($_POST['postContent'])?$_POST['postContent']:$postContent);
-            $imagePost= (isset($_POST['imagePost'])?$_POST['imagePost']:$postImageUrl);
-        
-            $query = "UPDATE `post` SET `image-url`='$imagePost',`text-content`='$textContent' WHERE `id`=$postId";
-            $run_update = mysqli_query($conn,$query);
-            if($run_update){
-                header("location: ../views/profile.php");
+           if(isset($_POST['postContent']) || isset($_POST['imagePost'])){
+               
+               $textContent = isset($_POST['postContent'])? trim($_POST['postContent']):"";
+                $imagePost= isset($_POST['imagePost'])?trim($_POST['imagePost']):"";
 
-            }
-
+                if($textContent != "" || $imagePost != ""){
+                    $query = "UPDATE `post` SET `image-url`='$imagePost',`text-content`='$textContent' WHERE `id`=$postId";
+                    $run_update = mysqli_query($conn,$query);
+                if($run_update){
+                    header("location: ../views/profile.php");
+                }
+                }   
+           }
               
         }
-        }else{
-        header("location: ../views/profile.php");
-    }
+        }
 }
 
 

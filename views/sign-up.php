@@ -34,16 +34,9 @@
 				<div>
 					<sapn class="alert">User Name Already in Use</span>
 				</div>
-				<?php
-				}
-				if (isset($_GET['error'])==4){
-					?>
-					<div>
-						<sapn class="alert">User Name Can Only hold English Character or Numbers</span>
-					</div>
-					<?php
+				<?php 
 			}
-			?>
+				?>
 		</div>
 		<div class="form__field-container">
 			<label for="email">Email</label>
